@@ -1,0 +1,64 @@
+h1 {
+    font-size: 9.5vw;
+}
+
+h3 {
+    font-size: 2.2vw;
+}
+
+p {
+    font-size: 1.8vw;
+}
+
+.center {
+    align-items: center;
+}
+
+.horizontal-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: black; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 100vw; 
+    height: 100vh;
+}
+
+/* Animation Related Classes */
+
+.show {
+    opacity: 1;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.trans {
+    transition: 0.5s;
+}
+
+.left {
+    transform: translateX(-100%);
+}
+
+.right {
+    transform: translateX(100%);
+}
+
+.up {
+    transform: translateY(-100%);
+}
+
+.down {
+    transform: translateY(100%);
+}

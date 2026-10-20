@@ -1,0 +1,18 @@
+slide-container id="slide-container" style="width:100vw; height:56.25vw;";
+
+div id="canvas-container";
+
+anim initial-frame=0 {
+  frame id="reset" {
+    id="canvas-container" initializeCanvas("100vw", "100vh");
+  }
+  frame {
+    id="canvas-container" model_orbitModel("0.2", "20", "1");
+  }
+  frame { id="canvas-container" model_unhighlight model_highlightInstrument("HUYGENS") model_positionCamera("7", "0", "6", "0", "-2", "0"); }
+  frame { id="canvas-container" model_unhighlight model_highlightInstrument("DISH") model_positionCamera("7", "8", "6", "0", "5", "0"); }
+  frame { id="canvas-container" model_unhighlight model_highlightInstrument("RTG") model_positionCamera("-5", "0", "6", "0", "-4", "0"); }
+  frame { id="canvas-container" model_unhighlight model_highlightInstrument("SPECTROMETER") model_positionCamera("-10", "0", "10", "0", "0", "0"); }
+  frame { id="canvas-container" model_unhighlight model_highlightInstrument("MAGNETOMETER") model_positionCamera("-15", "0", "10", "-4", "0", "0"); }
+  frame { id="canvas-container" model_unhighlight; }
+}

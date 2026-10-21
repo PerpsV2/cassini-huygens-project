@@ -2,17 +2,79 @@ slide-container id="slide-container" style="width:100vw; height:56.25vw;";
 
 div id="canvas-container";
 
+div/instruments {
+  !horizontal-flex *,** {
+    0 div class+="padded-div" {
+      div class+="instrument-description-box" {
+        &p : HUYGENS PROBE;
+      }
+    }
+  }
+  !horizontal-flex *,** {
+    0 div class+="padded-div" {
+      div class+="instrument-description-box" { 
+        &p : HIGH-GAIN ANTENNA;
+      }
+    }
+  }
+  !horizontal-flex *,** {
+    0 div class+="padded-div" {
+      div class+="instrument-description-box" { 
+        &p : RADIOISOTOPE THERMOELECTRIC GENERATORS (RTGs);
+      }
+    }
+  }
+  !horizontal-flex *,** {
+    0 div class+="padded-div" {
+      div class+="instrument-description-box" { 
+        &p : SPECTROMETERS;
+      }
+    }
+  }
+  !horizontal-flex *,** {
+    0 div class+="padded-div" {
+      div class+="instrument-description-box" {
+        &p : MAGNETOMETER BOOM;
+      }
+    }
+  }
+}
+
+frame id="next-instrument-text" {
+  instruments d;
+  instruments++;
+  instruments i;
+}
+
 anim initial-frame=0 {
   frame id="reset" {
+    /instruments t u;
     id="canvas-container" initializeCanvas("100vw", "100vh");
   }
   frame {
     id="canvas-container" model_orbitModel("0.2", "20", "1");
   }
-  frame { id="canvas-container" model_unhighlight model_highlightInstrument("HUYGENS") model_positionCamera("10", "0", "10", "0", "-2", "0", "1"); }
-  frame { id="canvas-container" model_unhighlight model_highlightInstrument("DISH") model_positionCamera("10", "8", "10", "0", "5", "0", "1"); }
-  frame { id="canvas-container" model_unhighlight model_highlightInstrument("RTG") model_positionCamera("-10", "0", "10", "0", "-4", "0", "1"); }
-  frame { id="canvas-container" model_unhighlight model_highlightInstrument("SPECTROMETER") model_positionCamera("-10", "0", "10", "0", "0", "0", "1"); }
-  frame { id="canvas-container" model_unhighlight model_highlightInstrument("MAGNETOMETER") model_positionCamera("-15", "0", "10", "-4", "0", "0", "1"); }
-  frame { id="canvas-container" model_unhighlight; }
+  frame { 
+    id="canvas-container" model_unhighlight model_highlightInstrument("HUYGENS") model_positionCamera("10", "0", "10", "0", "-2", "0", "1"); 
+    instruments i;
+  }
+  frame { 
+    id="canvas-container" model_unhighlight model_highlightInstrument("DISH") model_positionCamera("8", "8", "10", "-2", "5", "0", "1"); 
+    frame id="next-instrument-text";
+  }
+  frame { 
+    id="canvas-container" model_unhighlight model_highlightInstrument("RTG") model_positionCamera("-12", "0", "10", "-2", "-4", "0", "1"); 
+    frame id="next-instrument-text";
+  }
+  frame { 
+    id="canvas-container" model_unhighlight model_highlightInstrument("SPECTROMETER") model_positionCamera("-12", "0", "10", "-2", "0", "0", "1"); 
+    frame id="next-instrument-text";
+  }
+  frame { 
+    id="canvas-container" model_unhighlight model_highlightInstrument("MAGNETOMETER") model_positionCamera("-25", "0", "10", "-10", "0", "0", "1"); 
+    frame id="next-instrument-text";
+  }
+  frame { 
+    id="canvas-container" model_unhighlight; 
+  }
 }

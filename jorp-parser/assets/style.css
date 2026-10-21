@@ -33,6 +33,22 @@ body {
     height: 100vh;
 }
 
+.padded-div {
+    padding: 1rem;
+}
+
+.instrument-description-box {
+    background-color: grey;
+    padding: 1rem;
+}
+
+.red { background-color: red; }
+.orange { background-color: orange; }
+.yellow { background-color: yellow; }
+.green { background-color: green; }
+.blue { background-color: blue; }
+.purple { background-color: purple; }
+
 /* Animation Related Classes */
 
 .show {

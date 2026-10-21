@@ -12,7 +12,7 @@ const cassiniMesh = cassini.scene;
 cassiniMesh.scale.y = 2;
 scene.add(cassiniMesh);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 15);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
 const ambientLight = new THREE.AmbientLight(0xffffff, 5);
 scene.add(directionalLight);
 scene.add(ambientLight);
@@ -45,6 +45,19 @@ function resetRender() {
     render = () => { renderer.render(scene, camera) };
 }
 
+function lerp(start, end, progress) {
+    return start + (end - start) * progress;
+}
+
+function smoothLerp(start, end, progress) {
+    let smoothProgress = 3 * Math.pow(progress, 2) - 2 * Math.pow(progress, 3);
+    return start + (end - start) * smoothProgress;
+}
+
+function sphericalLerp(startQuaternion, endQuaternion, progress) {
+    return startQuaternion.slerp(endQuaternion, progress);
+}
+
 export function initCanvas(element, width, height) {
     camera.aspect = width / height;
     renderer.setSize(width, height);
@@ -52,14 +65,49 @@ export function initCanvas(element, width, height) {
     element.appendChild(renderer.domElement);
 }
 
-export function positionCamera(x, y, z, lookAtX, lookAtY, lookAtZ) {
+let prevCameraPosition = null;
+let prevCameraLookAt = null;
+export function positionCamera(x, y, z, lookAtX, lookAtY, lookAtZ, duration) {
     resetTimer();
+    
+    let cameraLookAt = new THREE.Vector3(lookAtX, lookAtY, lookAtZ);
+    if (prevCameraPosition === null || prevCameraLookAt === null) {
+        animateCurrentMovement = (time) => {
+            camera.position.x = x;
+            camera.position.y = y;
+            camera.position.z = z;
+            camera.lookAt(cameraLookAt);
 
-    animateCurrentMovement = (time) => {
-        camera.position.x = x;
-        camera.position.y = y;
-        camera.position.z = z;
-        camera.lookAt(new THREE.Vector3(lookAtX, lookAtY, lookAtZ));
+            resetAnimateCurrentMovement();
+            prevCameraPosition = camera.position;
+            prevCameraLookAt = cameraLookAt;
+        }
+    }
+    else {
+        let startQuaternion = new THREE.Quaternion();
+        startQuaternion.setFromEuler(camera.rotation);
+        let endQuaternion = new THREE.Quaternion();
+        let testCamera = new THREE.Camera();
+        testCamera.position.x = x;
+        testCamera.position.y = y;
+        testCamera.position.z = z;
+        testCamera.lookAt(cameraLookAt);
+        endQuaternion.setFromEuler(testCamera.rotation);
+
+        animateCurrentMovement = (time) => {
+            let progress = time / duration;
+            camera.setRotationFromQuaternion(sphericalLerp(startQuaternion, endQuaternion, progress));
+
+            camera.position.x = smoothLerp(prevCameraPosition.x, x, progress);
+            camera.position.y = smoothLerp(prevCameraPosition.y, y, progress);
+            camera.position.z = smoothLerp(prevCameraPosition.z, z, progress);
+
+            if (time >= duration) {
+                resetAnimateCurrentMovement();
+                prevCameraPosition = camera.position;
+                prevCameraLookAt = cameraLookAt;
+            }
+        }
     }
 }
 
@@ -78,8 +126,8 @@ export function orbitAroundModel(rotationalFrequency, distance, rotations) {
 }
 
 const highlightedScene = new THREE.Scene();
-const hsDirectionalLight = new THREE.DirectionalLight(0xffffff, 15);
-const hsAmbientLight = new THREE.AmbientLight(0xffffff, 5);
+const hsDirectionalLight = directionalLight.clone();
+const hsAmbientLight = ambientLight.clone();
 highlightedScene.add(hsDirectionalLight);
 highlightedScene.add(hsAmbientLight);
 

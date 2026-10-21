@@ -91,9 +91,9 @@ export function model_orbitModel(el, args) {
 }
 
 // set camera position and a coordinate to look at
-// args [cameraX, cameraY, cameraZ, lookAtX, lookAtY, lookAtZ]
+// args [cameraX, cameraY, cameraZ, lookAtX, lookAtY, lookAtZ, duration]
 export function model_positionCamera(el, args) {
-    GRAPHICS.positionCamera(Number(args[0]), Number(args[1]), Number(args[2]), Number(args[3]), Number(args[4]), Number(args[5]))
+    GRAPHICS.positionCamera(Number(args[0]), Number(args[1]), Number(args[2]), Number(args[3]), Number(args[4]), Number(args[5]), Number(args[6]))
 }
 
 // highlight an instrument on the cassini-huygens model

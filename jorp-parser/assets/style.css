@@ -1,13 +1,31 @@
+:root {
+    --main-bg-colour: #050a3a;
+    --highlight-colour: #fdffe6;
+}
+
 h1 {
     font-size: 9.5vw;
+    color: var(--highlight-colour);
+}
+
+h2 {
+    font-size: 4vw;
+    color: var(--highlight-colour);
 }
 
 h3 {
-    font-size: 2.2vw;
+    font-size: 2vw;
+    color: var(--highlight-colour);
+}
+
+h4 {
+    font-size: 1.8vw;
+    color: var(--highlight-colour);
 }
 
 p {
     font-size: 1.8vw;
+    color: var(--highlight-colour);
 }
 
 .center {
@@ -38,8 +56,16 @@ body {
 }
 
 .instrument-description-box {
-    background-color: grey;
+    background-color: var(--main-bg-colour);
+    border-radius: 0.2rem;
+    border: double var(--highlight-colour);
     padding: 1rem;
+    width: auto;
+    height: auto;
+}
+
+.bottom-margin {
+    margin-bottom: 1rem;
 }
 
 .red { background-color: red; }

@@ -5,50 +5,83 @@ div id="canvas-container";
 div/instruments {
   !horizontal-flex *,** {
     0 div class+="padded-div" {
-      div class+="instrument-description-box" {
-        &p : HUYGENS PROBE;
+      &div class+="instrument-description-box" {
+        &h3 : HUYGENS PROBE;
+        &h4 class+="bottom-margin" : A probe designed to perform a surface-landing on the moon of Titan.;
+        &hr class+="bottom-margin";
+        &p class+="bottom-margin" : HASI - Huygens Atmospheric Structure Instrument.;
+        &p class+="bottom-margin" : DWE - Doppler Wind Instrument.;
+        &p class+="bottom-margin" : DISR - Descent Imager/Spectral Radiometer.;
+        &p class+="bottom-margin" : ACP - Aersol Collector and Pyrolyzer.;
+        &p class+="bottom-margin" : GCMS - Gas Chromatograph Mass Spectrometer.;
+        &p class+="bottom-margin" : SSP - Surface-Science Package.;
       }
     }
   }
   !horizontal-flex *,** {
     0 div class+="padded-div" {
-      div class+="instrument-description-box" { 
-        &p : HIGH-GAIN ANTENNA;
+      &div class+="instrument-description-box" { 
+        &h3 : ANTENNAE;
+        &h4 class+="bottom-margin" : Instruments used to transmit data between the Earth and the spacecraft.;
+        &hr class+="bottom-margin";
+        &p class+="bottom-margin" : - 1 High-gain antenna with a 4 meter diameter dish.;
+        &p class+="bottom-margin" : - 2 Low-gain antennae.;
+        &p class+="bottom-margin" : - Distance to Earth varies from 1.2-1.6 billion kilometers.;
+        &p class+="bottom-margin" : - Data transfer rate at its peak was estimated to be 364.8kbps (kilobits);
       }
     }
   }
   !horizontal-flex *,** {
     0 div class+="padded-div" {
-      div class+="instrument-description-box" { 
-        &p : RADIOISOTOPE THERMOELECTRIC GENERATORS (RTGs);
+      &div class+="instrument-description-box" { 
+        &h3 : RADIOISOTOPE THERMOELECTRIC GENERATORS (RTGs);
+        &h4 class+="bottom-margin" : An electric generator which produces energy via radioactive decay of material.;
+        &hr class+="bottom-margin";
+        &p class+="bottom-margin" : Motivation - Scarcity of sunlight (Inverse-square law);
+        &p class+="bottom-margin" : - Used in conjunction with radioisotope heater units (RHUs) to regulate temperature.;
+        &p class+="bottom-margin" : - Plutonium-238 fuel.;
       }
     }
   }
   !horizontal-flex *,** {
     0 div class+="padded-div" {
-      div class+="instrument-description-box" { 
-        &p : SPECTROMETERS;
+      &div class+="instrument-description-box" { 
+        &h3 : SPECTROMETERS;
+        &h4 class+="bottom-margin" : Devices which analyze light and particles primarily to study the temperature and composition of Saturn.;
+        &hr class+="bottom-margin";
+        &p class+="bottom-margin" : - CAPS - Cassini Plasma Spectrometer;
+        &p class+="bottom-margin" : - INMS - Ion and Neutral Mass Spectrometer;
+        &hr class+="bottom-margin";
+        &p class+="bottom-margin" : - UVIS - Ultraviolet Imaging Spectrograph;
+        &p class+="bottom-margin" : - ISS - Imaging Science Subsystem;
+        &p class+="bottom-margin" : - VIMS - Visible and Infrared Mapping Spectrometer;
+        &p class+="bottom-margin" : - CIRS - Composite Infrared Spectrometer;
       }
     }
   }
   !horizontal-flex *,** {
     0 div class+="padded-div" {
-      div class+="instrument-description-box" {
-        &p : MAGNETOMETER BOOM;
+      &div class+="instrument-description-box" {
+        &h3 : MAGNETOMETER;
+        &h4 class+="bottom-margin" : A device to measure strength and direction of a magnetic field.;
+        &hr class+="bottom-margin";
+        &p class+="bottom-margin" : - Used to study the magnetosphere of Saturn.;
+        &p class+="bottom-margin" : - "Very sophisticated magnetic compass traveling through space.";
+        &p class+="bottom-margin" : - Provides context for data collected by other instruments.;
       }
     }
   }
 }
 
 frame id="next-instrument-text" {
-  instruments d;
+  instruments l;
   instruments++;
   instruments i;
 }
 
 anim initial-frame=0 {
   frame id="reset" {
-    /instruments t u;
+    /instruments t l;
     id="canvas-container" initializeCanvas("100vw", "100vh");
   }
   frame {

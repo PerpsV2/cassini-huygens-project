@@ -84,6 +84,15 @@ export function initializeCanvas(el, args) {
     GRAPHICS.initCanvas(el, el.clientWidth, el.clientHeight);
 }
 
+// initialize the scene for a specific scene
+// args [sceneType]
+export function initializeCanvasScene(el, args) {
+    switch (args[0]) {
+        case "MODEL": GRAPHICS.initModelView(); break;
+        case "SATURN": GRAPHICS.initSaturnView(); break;
+    }
+}
+
 // rotate camera around cassini-huygens model
 // args [rotationalPeriod, distance, rotations]
 export function model_orbitModel(el, args) {
@@ -112,4 +121,10 @@ export function model_highlightInstrument(el, args) {
 // args []
 export function model_unhighlight(el, args) {
     GRAPHICS.unhighlightInstruments();
+}
+
+// progress Cassini's orbit around Saturn
+// args [endDay, duration]
+export function saturn_progressOrbit(el, args) {
+    GRAPHICS.progressOrbitSaturn(Number(args[0]), Number(args[1]));
 }

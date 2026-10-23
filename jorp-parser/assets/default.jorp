@@ -145,10 +145,19 @@ anim initial-frame=0 {
     id="canvas-container" model_unhighlight; 
     instruments l;
   }
-  frame id="saturn" {
-    id="canvas-container" initializeCanvasScene("SATURN") halfScreenCanvas;
+  frame id="solar-system" {
+    id="canvas-container" initializeCanvasScene("SOLAR") halfScreenCanvas;
     id="date-tab" i;
     id="timeline-tab" i;
+  }
+  frame {
+    id="canvas-container" solar_progressOrbit("720", "15");
+  }
+  frame {
+    id="canvas-container" solar_progressOrbit("2431", "15");
+  }
+  frame id="saturn" {
+    id="canvas-container" initializeCanvasScene("SATURN");
   }
   frame {
     id="canvas-container" saturn_progressOrbit("20.6", "3");

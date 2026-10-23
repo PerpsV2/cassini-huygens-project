@@ -96,6 +96,7 @@ export function initializeCanvasScene(el, args) {
     switch (args[0]) {
         case "MODEL": GRAPHICS.initModelView(); break;
         case "SATURN": GRAPHICS.initSaturnView(); break;
+        case "SOLAR": GRAPHICS.initSolarView(); break;
     }
 }
 
@@ -127,6 +128,12 @@ export function model_highlightInstrument(el, args) {
 // args []
 export function model_unhighlight(el, args) {
     GRAPHICS.unhighlightInstruments();
+}
+
+// progress Cassini's orbit around the Sun
+// args [endDay, duration]
+export function solar_progressOrbit(el, args) {
+    GRAPHICS.progressOrbitSolar(Number(args[0]), Number(args[1]));
 }
 
 // progress Cassini's orbit around Saturn

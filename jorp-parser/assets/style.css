@@ -64,6 +64,20 @@ body {
     height: auto;
 }
 
+.date-information-box {
+    background-color: var(--main-bg-colour);
+    padding: 1rem;
+    height: auto;
+}
+
+.date-element>b {
+    font-family: 'Courier New', 'Courier', 'monospace';
+}
+
+.date-element {
+    font-family: 'Courier New', 'Courier', 'monospace';
+}
+
 .bottom-margin {
     margin-bottom: 1rem;
 }

@@ -84,6 +84,12 @@ export function initializeCanvas(el, args) {
     GRAPHICS.initCanvas(el, el.clientWidth, el.clientHeight);
 }
 
+// set the canvas to only take up half of the screen
+// args []
+export function halfScreenCanvas(el, args) {
+    GRAPHICS.halfScreenCanvas(el.clientWidth, el.clientHeight);
+}
+
 // initialize the scene for a specific scene
 // args [sceneType]
 export function initializeCanvasScene(el, args) {
@@ -95,13 +101,13 @@ export function initializeCanvasScene(el, args) {
 
 // rotate camera around cassini-huygens model
 // args [rotationalPeriod, distance, rotations]
-export function model_orbitModel(el, args) {
-    GRAPHICS.orbitAroundModel(Number(args[0]), Number(args[1]), Number(args[2]));
+export function orbitCamera(el, args) {
+    GRAPHICS.orbitCamera(Number(args[0]), Number(args[1]), Number(args[2]));
 }
 
 // set camera position and a coordinate to look at
 // args [cameraX, cameraY, cameraZ, lookAtX, lookAtY, lookAtZ, duration]
-export function model_positionCamera(el, args) {
+export function positionCamera(el, args) {
     GRAPHICS.positionCamera(Number(args[0]), Number(args[1]), Number(args[2]), Number(args[3]), Number(args[4]), Number(args[5]), Number(args[6]))
 }
 

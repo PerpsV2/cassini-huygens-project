@@ -3,10 +3,15 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OutlineEffect } from 'three/addons/effects/OutlineEffect.js';
 
 const saturnViewScale = 1_000_000_000; // meters/unit
+const solarViewPlanetScale = 500_000_000;
 const solarViewScale = 1_000_000_000_000; // meters/unit
 
 const saturnRadius = 120_536_000 / 2;
 const titanRadius = 5_150_000 / 2;
+const mercuryRadius = 4_879_000 / 2;
+const venusRadius = 12_104_000 / 2;
+const earthRadius = 12_756_000 / 2;
+const marsRadius = 6_792_000 / 2;
 
 const launchBeginDate = new Date(876904980000);
 const launchBeginDay = 2450736;
@@ -41,27 +46,27 @@ sunMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
 
 const mercury = await gltfLoader.loadAsync("./assets/models/mercury.glb");
 const mercuryMesh = mercury.scene;
-mercuryMesh.scale.x = 0.001 * saturnRadius / saturnViewScale;
-mercuryMesh.scale.y = 0.002 * saturnRadius / saturnViewScale;
-mercuryMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
+mercuryMesh.scale.x = 0.001 * mercuryRadius / solarViewPlanetScale;
+mercuryMesh.scale.y = 0.002 * mercuryRadius / solarViewPlanetScale;
+mercuryMesh.scale.z = 0.001 * mercuryRadius / solarViewPlanetScale;
 
 const venus = await gltfLoader.loadAsync("./assets/models/venus.glb");
 const venusMesh = venus.scene;
-venusMesh.scale.x = 0.001 * saturnRadius / saturnViewScale;
-venusMesh.scale.y = 0.002 * saturnRadius / saturnViewScale;
-venusMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
+venusMesh.scale.x = 0.001 * venusRadius / solarViewPlanetScale;
+venusMesh.scale.y = 0.002 * venusRadius / solarViewPlanetScale;
+venusMesh.scale.z = 0.001 * venusRadius / solarViewPlanetScale;
 
 const earth = await gltfLoader.loadAsync("./assets/models/earth.glb");
 const earthMesh = earth.scene;
-earthMesh.scale.x = 0.001 * saturnRadius / saturnViewScale;
-earthMesh.scale.y = 0.002 * saturnRadius / saturnViewScale;
-earthMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
+earthMesh.scale.x = 0.001 * earthRadius / solarViewPlanetScale;
+earthMesh.scale.y = 0.002 * earthRadius / solarViewPlanetScale;
+earthMesh.scale.z = 0.001 * earthRadius / solarViewPlanetScale;
 
 const mars = await gltfLoader.loadAsync("./assets/models/mars.glb");
 const marsMesh = mars.scene;
-marsMesh.scale.x = 0.001 * saturnRadius / saturnViewScale;
-marsMesh.scale.y = 0.002 * saturnRadius / saturnViewScale;
-marsMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
+marsMesh.scale.x = 0.001 * marsRadius / solarViewPlanetScale;
+marsMesh.scale.y = 0.002 * marsRadius / solarViewPlanetScale;
+marsMesh.scale.z = 0.001 * marsRadius / solarViewPlanetScale;
 
 const jupiter = await gltfLoader.loadAsync("./assets/models/jupiter.glb");
 const jupiterMesh = jupiter.scene;
@@ -342,7 +347,7 @@ export function initSolarView() {
 
     directionalLight.intensity = 1;
     ambientLight.intensity = 0;
-    positionCamera(0, 4, 0, 0, 0, 0, 1);
+    positionCamera(0, 1, 0, 0, 0, 0, 1);
 }
 
 function resetAnimateOrbitProgression() {
@@ -383,9 +388,13 @@ export function progressOrbitSolar(endDay, duration) {
 
     animateOrbitProgression = (time) => {
         let currentDay = startDay + daysPerSecond * time;
-        
+
         // disgusting code to update the date. don't bother looking at it too hard. it works. probably.
         let daysSinceLaunch = currentDay;
+        if (endDay <= 1) {
+            currentDay = 1;
+            daysSinceLaunch = 0;
+        }
         dayCountElement.innerHTML = "<b>Days since launch: " + Math.round(daysSinceLaunch) + "</b><br>(" + Math.round(daysSinceLaunch / 3.65) / 100 + " Earth years)";
         let currentDate = new Date(launchBeginDate.getTime() + daysSinceLaunch * 24 * 60 * 60 * 1000);
         let currentDateText = String(currentDate);

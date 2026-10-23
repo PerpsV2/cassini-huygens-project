@@ -81,6 +81,23 @@ body {
     height: auto;
 }
 
+.image-set {
+    box-sizing: border-box;
+    padding: 4rem;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    gap: 2rem;
+}
+
+.image-set>img,
+.image-set>video {
+    box-sizing: border-box;
+    border: 5px solid white;
+    object-fit: cover; 
+    rotate: random(-3deg, 3deg);
+}
+
 .date-element>b {
     font-family: 'Courier New', 'Courier', 'monospace';
 }

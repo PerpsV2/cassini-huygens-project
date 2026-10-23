@@ -1,4 +1,4 @@
-slide-container id="slide-container" style="width:100vw; height:56.25vw;";
+slide-container id="slide-container" style="width:100vw; height:40.25vw;";
 
 div id="canvas-container";
 
@@ -82,8 +82,53 @@ horizontal-flex *,** id="date-tab" {
   }
 }
 
+div/images style="box-sizing: border-box;" {
+  !div class+="image-set" {
+    &video id="cassini-launch-video" src="./assets/videos/cassini-launch.mp4" style="max-width: 30rem; max-height: 20rem;";
+    &img src="./assets/images/launch.jpg" style="max-width: 20rem; max-height: 20rem;";
+  }
+  !div class+="image-set" {
+    &img src="./assets/images/moon.jpg" style="max-width: 20rem; max-height: 20rem;";
+  }
+  !div class+="image-set" {
+    &img src="./assets/images/io-transit.jpg" style="max-width: 15rem; max-height: 15rem;";
+    &img src="./assets/images/jupiter-1.jpg" style="max-width: 15rem; max-height: 15rem;";
+    &img src="./assets/images/jupiter-2.jpg" style="max-width: 15rem; max-height: 15rem;";
+  }
+  !div class+="image-set" {
+    &img src="./assets/images/saturn-approach.jpg" style="max-width: 20rem; max-height: 20rem;";
+  }
+  !div class+="image-set" {
+    &img src="./assets/images/phoebe.jpg" style="max-width: 20rem; max-height: 20rem;";
+  }
+}
+
 horizontal-flex/timeline ****,*** id="timeline-tab" {
   1 div class+="timeline-event-information-box" {
+    !div {
+      &h3 : Liftoff.;
+      &p : test;
+    }
+    !div {
+      &h3 : Venus flyby and gravity-assist #1.;
+      &p : test;
+    }
+    !div {
+      &h3 : Venus flyby and gravity-assist #2.;
+    }
+    !div {
+      &h3 : Earth flyby and gravity-assist.;
+    }
+    !div {
+      &h3 : Jupiter flyby and gravity-assist.;
+    }
+    !div {
+      &h3 : Encounter with Saturn.;
+    }
+
+    !div {
+      &h3 : Approach with Phoebe.;
+    }
     !div {
       &h3 : First perichron.;
     }
@@ -108,10 +153,17 @@ frame id="next-timeline-text" {
   timeline s;
 }
 
+frame id="next-images" {
+  images d h;
+  images++;
+  images i s;
+}
+
 anim initial-frame=0 {
   frame id="reset" {
     /instruments t l;
     /timeline t h;
+    /images t d h;
     id="date-tab" t u;
     id="timeline-tab" t r;
   }
@@ -146,22 +198,47 @@ anim initial-frame=0 {
     instruments l;
   }
   frame id="solar-system" {
-    id="canvas-container" initializeCanvasScene("SOLAR") halfScreenCanvas;
+    id="canvas-container" initializeCanvasScene("SOLAR") solar_progressOrbit("1", "0.01") halfScreenCanvas;
     id="date-tab" i;
     id="timeline-tab" i;
   }
   frame {
-    id="canvas-container" solar_progressOrbit("720", "15");
+    timeline s;
+    images i s;
+    id="cassini-launch-video" play;
   }
   frame {
-    id="canvas-container" solar_progressOrbit("2431", "15");
+    id="canvas-container" solar_progressOrbit("193", "5");
+    frame id="next-timeline-text";
+    images d h;
+  }
+  frame {
+    id="canvas-container" solar_progressOrbit("617", "5");
+    frame id="next-timeline-text";
+  }
+  frame {
+    id="canvas-container" solar_progressOrbit("672", "2");
+    frame id="next-timeline-text";
+    frame id="next-images";
+  }
+  frame {
+    id="canvas-container" solar_progressOrbit("1172", "5") positionCamera("0", "2", "0", "0", "0", "0", "5");
+    frame id="next-timeline-text";
+    frame id="next-images";
+  }
+  frame {
+    id="canvas-container" solar_progressOrbit("2431", "5") positionCamera("0", "4", "0", "0", "0", "0", "5");
+    frame id="next-timeline-text";
+    frame id="next-images";
   }
   frame id="saturn" {
-    id="canvas-container" initializeCanvasScene("SATURN");
+    id="canvas-container" initializeCanvasScene("SATURN") saturn_progressOrbit("1", "0.01");
+    frame id="next-timeline-text";
+    frame id="next-images";
   }
   frame {
     id="canvas-container" saturn_progressOrbit("20.6", "3");
-    timeline s;
+    frame id="next-timeline-text";
   }
   frame {
     id="canvas-container" saturn_progressOrbit("125", "2");

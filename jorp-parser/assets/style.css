@@ -64,8 +64,19 @@ body {
     height: auto;
 }
 
+.timeline-event-information-box {
+    background-color: var(--main-bg-colour);
+    border-radius: 0.2rem;
+    border: double var(--highlight-colour);
+    width: auto;
+    height: auto;
+    padding: 1rem;
+}
+
 .date-information-box {
     background-color: var(--main-bg-colour);
+    border-radius: 0.2rem;
+    border: double var(--highlight-colour);
     padding: 1rem;
     height: auto;
 }
@@ -80,6 +91,10 @@ body {
 
 .bottom-margin {
     margin-bottom: 1rem;
+}
+
+#canvas-container {
+    background-color: black;
 }
 
 .red { background-color: red; }

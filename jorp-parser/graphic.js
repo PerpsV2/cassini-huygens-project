@@ -244,12 +244,12 @@ export function initSaturnView() {
     scene.add(titanMesh);
     directionalLight.intensity = 1;
     ambientLight.intensity = 0;
-    positionCamera(0, 2, 2, 0, 0, 0, 1);
+    positionCamera(0, 2, -2, 0, 0, 0, 1);
 }
 
 export function halfScreenCanvas(elementWidth, elementHeight) {
-    camera.aspect = elementWidth / 2 / elementHeight;
-    renderer.setSize(elementWidth / 2, elementHeight);
+    camera.aspect = elementWidth / 1.75 / elementHeight;
+    renderer.setSize(elementWidth / 1.75, elementHeight);
 }
 
 function resetAnimateOrbitProgression() {
@@ -297,10 +297,16 @@ export function progressOrbitSaturn(endDay, duration) {
 
     animateOrbitProgression = (time) => {
         let currentDay = startDay + daysPerSecond * time;
+        
+        // disgusting code to update the date. don't bother looking at it too hard. it works. probably.
         let daysSinceLaunch = currentDay + saturnBeginDay - launchBeginDay;
         dayCountElement.innerHTML = "<b>Days since launch: " + Math.round(daysSinceLaunch) + "</b><br>(" + Math.round(daysSinceLaunch / 3.65) / 100 + " Earth years)";
         let currentDate = new Date(launchBeginDate.getTime() + daysSinceLaunch * 24 * 60 * 60 * 1000);
-        dateElement.innerText = currentDate;
+        let currentDateText = String(currentDate);
+        currentDateText = currentDateText.slice(0, 4) + "<b>" + currentDateText.slice(4, 16) + "</b>" + currentDateText.slice(16);
+        console.log(currentDateText);
+        dateElement.innerHTML = currentDateText;
+        
         if (currentDay > endDay) {
             resetAnimateOrbitProgression();
         }

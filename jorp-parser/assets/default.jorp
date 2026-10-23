@@ -12,7 +12,7 @@ div/instruments {
         &p class+="bottom-margin" : HASI - Huygens Atmospheric Structure Instrument.;
         &p class+="bottom-margin" : DWE - Doppler Wind Instrument.;
         &p class+="bottom-margin" : DISR - Descent Imager/Spectral Radiometer.;
-        &p class+="bottom-margin" : ACP - Aersol Collector and Pyrolyzer.;
+        &p class+="bottom-margin" : ACP - Aerosol Collector and Pyrolyzer.;
         &p class+="bottom-margin" : GCMS - Gas Chromatograph Mass Spectrometer.;
         &p class+="bottom-margin" : SSP - Surface-Science Package.;
       }
@@ -66,44 +66,32 @@ div/instruments {
         &h4 class+="bottom-margin" : A device to measure strength and direction of a magnetic field.;
         &hr class+="bottom-margin";
         &p class+="bottom-margin" : - Used to study the magnetosphere of Saturn.;
-        &p class+="bottom-margin" : - "Very sophisticated magnetic compass traveling through space.";
+        &p class+="bottom-margin" : - "Very sophisticated magnetic compass.";
         &p class+="bottom-margin" : - Provides context for data collected by other instruments.;
       }
     }
   }
 }
 
-horizontal-flex *,** {
-  0 vertical-flex *****,*** {
-    1 div class+="padded-div" {
-      &div class+="date-information-box" {
-        &p id="date" class+="date-element bottom-margin" : June 11 2004;
-        &p id="day-count" class+="date-element bottom-margin" : Days since launch: 0;
-      }
+horizontal-flex *,** id="date-tab" {
+  0 div class+="padded-div" {
+    &div class+="date-information-box" {
+      &p id="date" class+="date-element bottom-margin" : June 11 2004;
+      &p id="day-count" class+="date-element bottom-margin" : Days since launch: 0;
     }
   }
 }
 
-div/timeline {
-  !horizontal-flex **,* {
-    1 div class+="padded-div" {
-      &div class+="timeline-description-box" {
-        &h3 : Titan intercept.;
-      }
+horizontal-flex/timeline ****,*** id="timeline-tab" {
+  1 div class+="timeline-event-information-box" {
+    !div {
+      &h3 : First perichron.;
     }
-  }
-  !horizontal-flex **,* {
-    1 div class+="padded-div" {
-      &div class+="timeline-description-box" {
-        &h3 : something;
-      }
+    !div {
+      &h3 : First Titan close proximity fly-by and gravity assist.;
     }
-  }
-  !horizontal-flex **,* {
-    1 div class+="padded-div" {
-      &div class+="timeline-description-box" {
-        &h3 : something else;
-      }
+    !div {
+      &h3 : Final mission phase and "Grand Finale";
     }
   }
 }
@@ -115,15 +103,17 @@ frame id="next-instrument-text" {
 }
 
 frame id="next-timeline-text" {
-  timeline r;
+  timeline h;
   timeline++;
-  timeline i;
+  timeline s;
 }
 
-anim initial-frame="saturn" {
+anim initial-frame=0 {
   frame id="reset" {
     /instruments t l;
-    /timeline t r;
+    /timeline t h;
+    id="date-tab" t u;
+    id="timeline-tab" t r;
   }
   frame {
     id="canvas-container" initializeCanvas("100vw", "100vh") initializeCanvasScene("MODEL");
@@ -157,10 +147,20 @@ anim initial-frame="saturn" {
   }
   frame id="saturn" {
     id="canvas-container" initializeCanvasScene("SATURN") halfScreenCanvas;
+    id="date-tab" i;
+    id="timeline-tab" i;
   }
   frame {
-    id="canvas-container" saturn_progressOrbit("138.1", "15");
-    timeline i;
+    id="canvas-container" saturn_progressOrbit("20.6", "3");
+    timeline s;
+  }
+  frame {
+    id="canvas-container" saturn_progressOrbit("125", "2");
+    timeline h;
+  }
+  frame {
+    id="canvas-container" saturn_progressOrbit("138.1", "3");
+    frame id="next-timeline-text";
   }
   frame {
     id="canvas-container" saturn_progressOrbit("4843", "15");

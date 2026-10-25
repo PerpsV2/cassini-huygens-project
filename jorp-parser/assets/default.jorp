@@ -99,7 +99,7 @@ div/images style="box-sizing: border-box;" {
     &img src="./assets/images/saturn-approach.jpg" style="max-width: 20rem; max-height: 20rem;";
   }
   !div class+="image-set" {
-    &img src="./assets/images/phoebe.jpg" style="max-width: 20rem; max-height: 20rem;";
+    &img src="./assets/images/phoebe.jpg" style="max-width: 40rem; max-height: 20rem;";
   }
 }
 

@@ -7,7 +7,15 @@ const solarViewPlanetScale = 500_000_000;
 const solarViewScale = 1_000_000_000_000; // meters/unit
 
 const saturnRadius = 120_536_000 / 2;
+
 const titanRadius = 5_150_000 / 2;
+const rheaRadius = 1_527_600 / 2;
+const iapetusRadius = 1_468_600 / 2;
+const dioneRadius = 1_122_800 / 2;
+const tethysRadius = 1_062_200 / 2;
+const enceladusRadius = 504_200 / 2;
+const mimasRadius = 396_400 / 2;
+
 const mercuryRadius = 4_879_000 / 2;
 const venusRadius = 12_104_000 / 2;
 const earthRadius = 12_756_000 / 2;
@@ -36,6 +44,42 @@ const titanMesh = titan.scene;
 titanMesh.scale.x = 0.01 * titanRadius / saturnViewScale;
 titanMesh.scale.y = 0.02 * titanRadius / saturnViewScale;
 titanMesh.scale.z = 0.01 * titanRadius / saturnViewScale;
+
+const rhea = await gltfLoader.loadAsync("./assets/models/rhea.glb");
+const rheaMesh = rhea.scene;
+rheaMesh.scale.x = 0.01 * rheaRadius / saturnViewScale;
+rheaMesh.scale.y = 0.02 * rheaRadius / saturnViewScale;
+rheaMesh.scale.z = 0.01 * rheaRadius / saturnViewScale;
+
+const iapetus = await gltfLoader.loadAsync("./assets/models/iapetus.glb");
+const iapetusMesh = iapetus.scene;
+iapetusMesh.scale.x = 0.01 * iapetusRadius / saturnViewScale;
+iapetusMesh.scale.y = 0.02 * iapetusRadius / saturnViewScale;
+iapetusMesh.scale.z = 0.01 * iapetusRadius / saturnViewScale;
+
+const dione = await gltfLoader.loadAsync("./assets/models/dione.glb");
+const dioneMesh = dione.scene;
+dioneMesh.scale.x = 0.01 * dioneRadius / saturnViewScale;
+dioneMesh.scale.y = 0.02 * dioneRadius / saturnViewScale;
+dioneMesh.scale.z = 0.01 * dioneRadius / saturnViewScale;
+
+const tethys = await gltfLoader.loadAsync("./assets/models/tethys.glb");
+const tethysMesh = tethys.scene;
+tethysMesh.scale.x = 0.01 * tethysRadius / saturnViewScale;
+tethysMesh.scale.y = 0.02 * tethysRadius / saturnViewScale;
+tethysMesh.scale.z = 0.01 * tethysRadius / saturnViewScale;
+
+const enceladus = await gltfLoader.loadAsync("./assets/models/enceladus.glb");
+const enceladusMesh = enceladus.scene;
+enceladusMesh.scale.x = 0.01 * enceladusRadius / saturnViewScale;
+enceladusMesh.scale.y = 0.02 * enceladusRadius / saturnViewScale;
+enceladusMesh.scale.z = 0.01 * enceladusRadius / saturnViewScale;
+
+const mimas = await gltfLoader.loadAsync("./assets/models/mimas.glb");
+const mimasMesh = mimas.scene;
+mimasMesh.scale.x = 0.02 * mimasRadius / saturnViewScale;
+mimasMesh.scale.y = 0.04 * mimasRadius / saturnViewScale;
+mimasMesh.scale.z = 0.02 * mimasRadius / saturnViewScale;
 
 // --- SOLAR SYSTEM ASSETS (excluding saturn) ---
 const sun = await gltfLoader.loadAsync("./assets/models/sun.glb");
@@ -265,6 +309,11 @@ export function unhighlightInstruments() {
 
 // --- SOLAR VIEW ---
 
+const celestialBodyOutlineEffect = new OutlineEffect(renderer, {
+    defaultThickness: 0.003,
+    defaultColor: [1, 1, 1]
+});
+
 let orbitGeometry = new THREE.BufferGeometry().setFromPoints([]);
 let orbitMaterial = new THREE.LineBasicMaterial({color: 0xffff00});
 let orbit = new THREE.Line(orbitGeometry, orbitMaterial);
@@ -348,6 +397,10 @@ export function initSolarView() {
     directionalLight.intensity = 1;
     ambientLight.intensity = 0;
     positionCamera(0, 1, 0, 0, 0, 0, 1);
+
+    render = () => {
+        celestialBodyOutlineEffect.render(scene, camera);
+    };
 }
 
 function resetAnimateOrbitProgression() {
@@ -450,13 +503,23 @@ fetch("./assets/saturn-orbit-data/cassini-position-log.txt").then(response => re
 
 // 0 - Saturn
 // 1 - Titan
+// 2 - Iapetus
+// 3 - Dione
+// 4 - Tethys
+// 5 - Enceladus
+// 6 - Mimas
 let celestialBodyDataPointsSaturnOrbit = [];
-fetch("./assets/saturn-orbit-data/saturn-position-log.txt").then(response => response.text()).then(text => {
-    celestialBodyDataPointsSaturnOrbit.push([saturnMesh, 0, parsePositionLogText(text, saturnBeginDay, saturnViewScale)]);
-});
-fetch("./assets/saturn-orbit-data/titan-position-log.txt").then(response => response.text()).then(text => {
-    celestialBodyDataPointsSaturnOrbit.push([titanMesh, 0, parsePositionLogText(text, saturnBeginDay, saturnViewScale)]);
-});
+let saturnOrbitFileNames = [
+    "saturn-position-log.txt", "titan-position-log.txt", "rhea-position-log.txt", "iapetus-position-log.txt", "dione-position-log.txt", "tethys-position-log.txt", "enceladus-position-log.txt", "mimas-position-log.txt"
+];
+let saturnOrbitMeshes = [
+    saturnMesh, titanMesh, rheaMesh, iapetusMesh, dioneMesh, tethysMesh, enceladusMesh, mimasMesh
+];
+for (let i = 0; i < saturnOrbitFileNames.length; ++i) {
+    fetch("./assets/saturn-orbit-data/" + saturnOrbitFileNames[i]).then(response => response.text()).then(text => {
+        celestialBodyDataPointsSaturnOrbit.push([saturnOrbitMeshes[i], 0, parsePositionLogText(text, saturnBeginDay, saturnViewScale)]);
+    });
+}
 
 let startDaySaturnOrbit = 0;
 
@@ -470,12 +533,22 @@ export function initSaturnView() {
     saturnMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
 
     scene.add(titanMesh);
+    scene.add(rheaMesh);
+    scene.add(iapetusMesh);
+    scene.add(dioneMesh);
+    scene.add(tethysMesh);
+    scene.add(enceladusMesh);
+    scene.add(mimasMesh);
     
     scene.add(orbit);
     
     directionalLight.intensity = 1;
     ambientLight.intensity = 0;
     positionCamera(0, 2, -2, 0, 0, 0, 1);
+
+    render = () => {
+        celestialBodyOutlineEffect.render(scene, camera);
+    };
 }
 
 export function progressOrbitSaturn(endDay, duration) {

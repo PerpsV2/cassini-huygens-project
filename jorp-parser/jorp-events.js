@@ -133,11 +133,11 @@ export function model_unhighlight(el, args) {
 // progress Cassini's orbit around the Sun
 // args [endDay, duration]
 export function solar_progressOrbit(el, args) {
-    GRAPHICS.progressOrbitSolar(Number(args[0]), Number(args[1]));
+    GRAPHICS.progressSolarOrbits(Number(args[0]), Number(args[1]));
 }
 
 // progress Cassini's orbit around Saturn
 // args [endDay, duration]
 export function saturn_progressOrbit(el, args) {
-    GRAPHICS.progressOrbitSaturn(Number(args[0]), Number(args[1]));
+    GRAPHICS.progressSaturnOrbits(Number(args[0]), Number(args[1]));
 }

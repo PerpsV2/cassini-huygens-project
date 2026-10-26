@@ -127,13 +127,22 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
     }
 
     !div {
-      &h3 : Approach with Phoebe.;
+      &h3 : Approach with Phoebe;
     }
     !div {
-      &h3 : First perichron.;
+      &h3 : First perichron;
     }
     !div {
-      &h3 : First Titan close proximity fly-by and gravity assist.;
+      &h3 : Discovery of Methone and Pallene;
+    }
+    !div {
+      &h3 : First Titan close proximity fly-by and gravity assist;
+    }
+    !div {
+      &h3 : First Enceladus close proximity fly-by;
+    }
+    !div {
+      &h3 : Cassini Equinox Mission;
     }
     !div {
       &h3 : Final mission phase and "Grand Finale";
@@ -241,11 +250,23 @@ anim initial-frame=0 {
     frame id="next-timeline-text";
   }
   frame {
+    id="canvas-container" saturn_progressOrbit("66", "3");
+    frame id="next-timeline-text";
+  }
+  frame {
+    id="canvas-container" saturn_progressOrbit("251", "2");
+    frame id="next-timeline-text";
+  }
+  frame {
     id="canvas-container" saturn_progressOrbit("125", "2");
     timeline h;
   }
   frame {
     id="canvas-container" saturn_progressOrbit("138.1", "3");
+    frame id="next-timeline-text";
+  }
+  frame {
+    id="canvas-container" saturn_progressOrbit("1447", "3");
     frame id="next-timeline-text";
   }
   frame {

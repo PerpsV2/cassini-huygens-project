@@ -309,98 +309,74 @@ export function unhighlightInstruments() {
 
 // --- SOLAR VIEW ---
 
-const celestialBodyOutlineEffect = new OutlineEffect(renderer, {
-    defaultThickness: 0.003,
-    defaultColor: [1, 1, 1]
-});
-
-let orbitGeometry = new THREE.BufferGeometry().setFromPoints([]);
-let orbitMaterial = new THREE.LineBasicMaterial({color: 0xffff00});
-let orbit = new THREE.Line(orbitGeometry, orbitMaterial);
-scene.add(orbit);
-
-let cassiniDataPointsSolarOrbit = [];
-let cassiniCurrentIndexSolarOrbit = 0;
-fetch("./assets/solar-orbit-data/cassini-position-log.txt").then(response => response.text()).then(text => {
-    cassiniDataPointsSolarOrbit = parsePositionLogText(text, launchBeginDay, solarViewScale);
-});
-
-// for each element x in celestialBodyDataPoints
-// x[0] stores a reference to the celestial body mesh
-// x[1] stores the current data point index
-// x[2] contains the actual data
-
-// 0 - Sun
-// 1 - Mercury
-// 2 - Venus
-// 3 - Earth
-// 4 - Mars
-// 5 - Jupiter
-// 6 - Saturn
-// 7 - Uranus
-// 8 - Neptune
-let celestialBodyDataPointsSolarOrbit = [];
-let solarOrbitFileNames = [
-    "sun-position-log.txt", "mercury-position-log.txt", "venus-position-log.txt", 
-    "earth-position-log.txt", "mars-position-log.txt", "jupiter-position-log.txt", 
-    "saturn-position-log.txt", "uranus-position-log.txt", "neptune-position-log.txt"
-];
-let solarOrbitMeshes = [
-    sunMesh, mercuryMesh, venusMesh,
-    earthMesh, marsMesh, jupiterMesh,
-    saturnMesh, uranusMesh, neptuneMesh
-]
-for (let i = 0; i < solarOrbitFileNames.length; ++i) {
-    fetch("./assets/solar-orbit-data/" + solarOrbitFileNames[i]).then(response => response.text()).then(text => {
-        celestialBodyDataPointsSolarOrbit.push([solarOrbitMeshes[i], 0, parsePositionLogText(text, launchBeginDay, solarViewScale)]);
-    });
-}
-
-let startDaySolarOrbit = 0;
-
-let orbitMeshPoints = [];
-let lastOrbitMeshPoint = new THREE.Vector3(0, 0, 0);
-
 let animateOrbitProgression;
 resetAnimateOrbitProgression();
+
+// each entry contains mesh?, orbit colour, and position log file
+let solarOrbitDataReferences = [
+    { mesh: sunMesh, orbitColour: 0xffffff, positionLog: "sun-position-log.txt" },
+    { mesh: mercuryMesh, orbitColour: 0x7d7d7d, positionLog: "mercury-position-log.txt" },
+    { mesh: venusMesh, orbitColour: 0xff9408, positionLog: "venus-position-log.txt" },
+    { mesh: earthMesh, orbitColour: 0x00fff2, positionLog: "earth-position-log.txt" },
+    { mesh: marsMesh, orbitColour: 0xff4f19, positionLog: "mars-position-log.txt" },
+    { mesh: jupiterMesh, orbitColour: 0x805613, positionLog: "jupiter-position-log.txt" },
+    { mesh: saturnMesh, orbitColour: 0xa69632, positionLog: "saturn-position-log.txt" },
+    { mesh: uranusMesh, orbitColour: 0xc4faff, positionLog: "uranus-position-log.txt" },
+    { mesh: neptuneMesh, orbitColour: 0x006bd6, positionLog: "neptune-position-log.txt" },
+    { mesh: null, orbitColour: 0xffff00, positionLog: "cassini-position-log.txt" }
+];
+let solarOrbitData = constructOrbitData("./assets/solar-orbit-data/", solarOrbitDataReferences, launchBeginDay, solarViewScale);
+let startDaySolarOrbit = 0;
+
+function constructOrbitData(rootFilePath, references, beginDay, viewScale) {
+    let solarOrbitData = [];
+    for (let i = 0; i < references.length; ++i) {
+        let reference = references[i];
+        let orbitGeometry = new THREE.BufferGeometry();
+        let orbitMaterial = new THREE.LineBasicMaterial({color: reference.orbitColour});
+        let orbitMesh = new THREE.Line(orbitGeometry, orbitMaterial);
+        fetch(rootFilePath + reference.positionLog).then(response => response.text()).then(text => {
+            let positionDataPoints = parsePositionLogText(text, beginDay, viewScale);
+            solarOrbitData.push({
+                orbitMeshGeometry: orbitGeometry,
+                orbitMesh: orbitMesh,
+                orbitMeshPoints: [],
+                lastOrbitMeshPoint: new THREE.Vector3(0, 0, 0),
+                dataPoints: positionDataPoints,
+                dataPointIndex: 0,
+                mesh: reference.mesh
+            });
+        })
+    }
+    return solarOrbitData;
+}
 
 export function halfScreenCanvas(elementWidth, elementHeight) {
     camera.aspect = elementWidth / 1.75 / elementHeight;
     renderer.setSize(elementWidth / 1.75, elementHeight);
 }
 
-function resetOrbitMesh() {
-    orbitMeshPoints = [];
-    orbit.geometry = new THREE.BufferGeometry();
+function initMeshes(orbitDataList) {
+    for (let i = 0; i < orbitDataList.length; ++i) {
+        let orbitData = orbitDataList[i];
+        if (orbitData.mesh)
+            scene.add(orbitData.mesh);
+        scene.add(orbitData.orbitMesh);
+    }
 }
 
 export function initSolarView() {
     resetScene();
-    resetOrbitMesh();
 
-    scene.add(saturnMesh);
+    initMeshes(solarOrbitData);
+
     saturnMesh.scale.x = 0.001 * saturnRadius / saturnViewScale;
     saturnMesh.scale.y = 0.002 * saturnRadius / saturnViewScale;
     saturnMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
 
-    scene.add(sunMesh);
-    scene.add(mercuryMesh);
-    scene.add(venusMesh);
-    scene.add(earthMesh);
-    scene.add(marsMesh);
-    scene.add(jupiterMesh);
-    scene.add(uranusMesh);
-    scene.add(neptuneMesh);
-
-    scene.add(orbit);
-
     directionalLight.intensity = 1;
     ambientLight.intensity = 0;
     positionCamera(0, 1, 0, 0, 0, 0, 1);
-
-    render = () => {
-        celestialBodyOutlineEffect.render(scene, camera);
-    };
 }
 
 function resetAnimateOrbitProgression() {
@@ -424,189 +400,116 @@ function parsePositionLogText(text, beginDay, scale) {
             .map(x => x.trim())
             .filter(Boolean)
             .map(x => parsePositionLogScientificNotation(x) / scale);
-        result.push([time, position[0], position[2], position[1]]);
+        result.push({
+            time: time, 
+            x: position[0], 
+            y: position[2], 
+            z: position[1]
+        });
     }
     return result;
 }
 
-export function progressOrbitSolar(endDay, duration) {
-    resetTimer();
-
-    let startDay = startDaySolarOrbit;
-    let timeSpan = endDay - startDay;
-    let daysPerSecond = timeSpan / duration;
-
+function updateDate(daysSinceLaunch) {
     let dateElement = document.getElementById("date");
     let dayCountElement = document.getElementById("day-count");
 
+    dayCountElement.innerHTML = "<b>Days since launch: " + Math.round(daysSinceLaunch) + "</b><br>(" + Math.round(daysSinceLaunch / 3.65) / 100 + " Earth years)";
+    let currentDate = new Date(launchBeginDate.getTime() + daysSinceLaunch * 24 * 60 * 60 * 1000);
+    let currentDateText = String(currentDate);
+    currentDateText = currentDateText.slice(0, 4) + "<b>" + currentDateText.slice(4, 16) + "</b>" + currentDateText.slice(16);
+    dateElement.innerHTML = currentDateText;
+}
+
+function progressOrbits(startDay, startDaySetter, endDay, duration, orbitDataList, maxOrbitPoints, moveTolerance = 0.0005, dateOffset = 0) {
+    resetTimer();
+
+    let timeSpan = endDay - startDay;
+    let daysPerSecond = timeSpan / duration;
+
     animateOrbitProgression = (time) => {
         let currentDay = startDay + daysPerSecond * time;
-
-        // disgusting code to update the date. don't bother looking at it too hard. it works. probably.
-        let daysSinceLaunch = currentDay;
+        // duct tape patch for funny dates when loading scene
+        let daysSinceLaunch = currentDay + dateOffset;
         if (endDay <= 1) {
             currentDay = 1;
             daysSinceLaunch = 0;
         }
-        dayCountElement.innerHTML = "<b>Days since launch: " + Math.round(daysSinceLaunch) + "</b><br>(" + Math.round(daysSinceLaunch / 3.65) / 100 + " Earth years)";
-        let currentDate = new Date(launchBeginDate.getTime() + daysSinceLaunch * 24 * 60 * 60 * 1000);
-        let currentDateText = String(currentDate);
-        currentDateText = currentDateText.slice(0, 4) + "<b>" + currentDateText.slice(4, 16) + "</b>" + currentDateText.slice(16);
-        dateElement.innerHTML = currentDateText;
+        updateDate(daysSinceLaunch);
         
         if (currentDay > endDay) {
             resetAnimateOrbitProgression();
         }
 
-        let dataPoint = cassiniDataPointsSolarOrbit[cassiniCurrentIndexSolarOrbit];
-        while (currentDay > dataPoint[0]) {
-            let orbitMeshPoint = new THREE.Vector3(dataPoint[1], dataPoint[2], dataPoint[3]);
-            if (new THREE.Vector3(orbitMeshPoint.x - lastOrbitMeshPoint.x, orbitMeshPoint.y - lastOrbitMeshPoint.y, orbitMeshPoint.z - lastOrbitMeshPoint.z).length() > 0.0005) {
-                orbitMeshPoints.push(orbitMeshPoint);
-                orbitGeometry.dispose();
-                orbitGeometry = new THREE.BufferGeometry().setFromPoints(orbitMeshPoints);
-                orbit.geometry = orbitGeometry;
-                lastOrbitMeshPoint = orbitMeshPoint.clone();
-            }
-            dataPoint = cassiniDataPointsSolarOrbit[++cassiniCurrentIndexSolarOrbit];
-        }
+        for (let i = 0; i < orbitDataList.length; ++i) {
+            let orbitData = orbitDataList[i];
+            let dataPoint = orbitData.dataPoints[orbitData.dataPointIndex];
+            while (currentDay > dataPoint.time) {
+                let orbitMeshPoint = new THREE.Vector3(dataPoint.x, dataPoint.y, dataPoint.z);
+                if (orbitMeshPoint.distanceTo(orbitData.lastOrbitMeshPoint) > moveTolerance) {
+                    orbitData.orbitMeshPoints.push(orbitMeshPoint);
+                    if (orbitData.orbitMeshPoints.length > maxOrbitPoints)
+                        orbitData.orbitMeshPoints.splice(0, orbitData.orbitMeshPoints.length - maxOrbitPoints);
 
-        for (let i = 0; i < celestialBodyDataPointsSolarOrbit.length; ++i) {
-            let celestialBodyData = celestialBodyDataPointsSolarOrbit[i];
+                    orbitData.orbitMeshGeometry.dispose();
+                    orbitData.orbitMeshGeometry = new THREE.BufferGeometry().setFromPoints(orbitData.orbitMeshPoints);
+                    orbitData.orbitMesh.geometry = orbitData.orbitMeshGeometry;
 
-            let celestialBodyMesh = celestialBodyData[0];
-            let celestialBodyDataPointIndex = celestialBodyData[1];
-            let celestialBodyDataPoint = celestialBodyData[2][celestialBodyDataPointIndex];
-            while (currentDay > celestialBodyDataPoint[0]) {
-                let celestialBodyPosition = new THREE.Vector3(celestialBodyDataPoint[1], celestialBodyDataPoint[2], celestialBodyDataPoint[3]);
-                celestialBodyMesh.position.x = celestialBodyPosition.x;
-                celestialBodyMesh.position.y = celestialBodyPosition.y;
-                celestialBodyMesh.position.z = celestialBodyPosition.z;
-                celestialBodyData[1]++;
-                celestialBodyDataPoint = celestialBodyData[2][celestialBodyData[1]];
+                    orbitData.lastOrbitMeshPoint = orbitMeshPoint.clone();
+
+                    if (orbitData.mesh) {
+                        orbitData.mesh.position.set(dataPoint.x, dataPoint.y, dataPoint.z);
+                    }
+                }
+                dataPoint = orbitData.dataPoints[++orbitData.dataPointIndex];
             }
         }
     }
 
-    startDaySolarOrbit = endDay;
+    startDaySetter(endDay);
+}
+
+export function progressSolarOrbits(endDay, duration) {
+    progressOrbits(startDaySolarOrbit, (v) => {startDaySolarOrbit = v}, endDay, duration, solarOrbitData, 10000);
 }
 
 // --- SATURN VIEW ---
 
-const maxOrbitDataPoints = 1000;
-
-let cassiniDataPointsSaturnOrbit = [];
-let cassiniCurrentIndexSaturnOrbit = 0;
-fetch("./assets/saturn-orbit-data/cassini-position-log.txt").then(response => response.text()).then(text => {
-    cassiniDataPointsSaturnOrbit = parsePositionLogText(text, saturnBeginDay, saturnViewScale);
-});
-
-// 0 - Saturn
-// 1 - Titan
-// 2 - Iapetus
-// 3 - Dione
-// 4 - Tethys
-// 5 - Enceladus
-// 6 - Mimas
-let celestialBodyDataPointsSaturnOrbit = [];
-let saturnOrbitFileNames = [
-    "saturn-position-log.txt", "titan-position-log.txt", "rhea-position-log.txt", "iapetus-position-log.txt", "dione-position-log.txt", "tethys-position-log.txt", "enceladus-position-log.txt", "mimas-position-log.txt"
+let saturnOrbitDataReferences = [
+    { mesh: saturnMesh, orbitColour: 0xffffff, positionLog: "saturn-position-log.txt" },
+    { mesh: titanMesh, orbitColour: 0x7d7d7d, positionLog: "titan-position-log.txt" },
+    { mesh: rheaMesh, orbitColour: 0xff9408, positionLog: "rhea-position-log.txt" },
+    { mesh: iapetusMesh, orbitColour: 0x00fff2, positionLog: "iapetus-position-log.txt" },
+    { mesh: dioneMesh, orbitColour: 0xff4f19, positionLog: "dione-position-log.txt" },
+    { mesh: tethysMesh, orbitColour: 0x805613, positionLog: "tethys-position-log.txt" },
+    { mesh: enceladusMesh, orbitColour: 0xa69632, positionLog: "enceladus-position-log.txt" },
+    { mesh: mimasMesh, orbitColour: 0xc4faff, positionLog: "mimas-position-log.txt" },
+    { mesh: null, orbitColour: 0xffff00, positionLog: "cassini-position-log.txt" }
 ];
-let saturnOrbitMeshes = [
-    saturnMesh, titanMesh, rheaMesh, iapetusMesh, dioneMesh, tethysMesh, enceladusMesh, mimasMesh
-];
-for (let i = 0; i < saturnOrbitFileNames.length; ++i) {
-    fetch("./assets/saturn-orbit-data/" + saturnOrbitFileNames[i]).then(response => response.text()).then(text => {
-        celestialBodyDataPointsSaturnOrbit.push([saturnOrbitMeshes[i], 0, parsePositionLogText(text, saturnBeginDay, saturnViewScale)]);
-    });
-}
-
+let saturnOrbitData = constructOrbitData("./assets/saturn-orbit-data/", saturnOrbitDataReferences, saturnBeginDay, saturnViewScale);
 let startDaySaturnOrbit = 0;
 
 export function initSaturnView() {
     resetScene();
-    resetOrbitMesh()
+    resetAnimateOrbitProgression();
+    saturnMesh.position.x = 0;
+    saturnMesh.position.y = 0;
+    saturnMesh.position.z = 0;
 
-    scene.add(saturnMesh);
+    saturnMesh.rotation.z = 0.09;
+    saturnMesh.rotation.x = 3.5;
+
+    initMeshes(saturnOrbitData);
+
     saturnMesh.scale.x = 0.001 * saturnRadius / saturnViewScale;
-    saturnMesh.scale.y = 0.002 * saturnRadius / saturnViewScale;
+    saturnMesh.scale.y = 0.001 * saturnRadius / saturnViewScale;
     saturnMesh.scale.z = 0.001 * saturnRadius / saturnViewScale;
-
-    scene.add(titanMesh);
-    scene.add(rheaMesh);
-    scene.add(iapetusMesh);
-    scene.add(dioneMesh);
-    scene.add(tethysMesh);
-    scene.add(enceladusMesh);
-    scene.add(mimasMesh);
-    
-    scene.add(orbit);
     
     directionalLight.intensity = 1;
     ambientLight.intensity = 0;
     positionCamera(0, 2, -2, 0, 0, 0, 1);
-
-    render = () => {
-        celestialBodyOutlineEffect.render(scene, camera);
-    };
 }
 
-export function progressOrbitSaturn(endDay, duration) {
-    resetTimer();
-
-    let startDay = startDaySaturnOrbit;
-    let timeSpan = endDay - startDay;
-    let daysPerSecond = timeSpan / duration;
-
-    let dateElement = document.getElementById("date");
-    let dayCountElement = document.getElementById("day-count");
-
-    animateOrbitProgression = (time) => {
-        let currentDay = startDay + daysPerSecond * time;
-        
-        // disgusting code to update the date. don't bother looking at it too hard. it works. probably.
-        let daysSinceLaunch = currentDay + saturnBeginDay - launchBeginDay;
-        dayCountElement.innerHTML = "<b>Days since launch: " + Math.round(daysSinceLaunch) + "</b><br>(" + Math.round(daysSinceLaunch / 3.65) / 100 + " Earth years)";
-        let currentDate = new Date(launchBeginDate.getTime() + daysSinceLaunch * 24 * 60 * 60 * 1000);
-        let currentDateText = String(currentDate);
-        currentDateText = currentDateText.slice(0, 4) + "<b>" + currentDateText.slice(4, 16) + "</b>" + currentDateText.slice(16);
-        dateElement.innerHTML = currentDateText;
-        
-        if (currentDay > endDay) {
-            resetAnimateOrbitProgression();
-        }
-
-        let dataPoint = cassiniDataPointsSaturnOrbit[cassiniCurrentIndexSaturnOrbit];
-        while (currentDay > dataPoint[0]) {
-            let orbitMeshPoint = new THREE.Vector3(dataPoint[1], dataPoint[2], dataPoint[3]);
-            if (new THREE.Vector3(orbitMeshPoint.x - lastOrbitMeshPoint.x, orbitMeshPoint.y - lastOrbitMeshPoint.y, orbitMeshPoint.z - lastOrbitMeshPoint.z).length() > 0.05) {
-                orbitMeshPoints.push(orbitMeshPoint);
-                if (orbitMeshPoints.length > maxOrbitDataPoints)
-                    orbitMeshPoints.splice(0, orbitMeshPoints.length - maxOrbitDataPoints);
-                orbitGeometry.dispose();
-                orbitGeometry = new THREE.BufferGeometry().setFromPoints(orbitMeshPoints);
-                orbit.geometry = orbitGeometry;
-                lastOrbitMeshPoint = orbitMeshPoint.clone();
-            }
-            dataPoint = cassiniDataPointsSaturnOrbit[++cassiniCurrentIndexSaturnOrbit];
-        }
-
-        for (let i = 0; i < celestialBodyDataPointsSaturnOrbit.length; ++i) {
-            let celestialBodyData = celestialBodyDataPointsSaturnOrbit[i];
-
-            let celestialBodyMesh = celestialBodyData[0];
-            let celestialBodyDataPointIndex = celestialBodyData[1];
-            let celestialBodyDataPoint = celestialBodyData[2][celestialBodyDataPointIndex];
-            while (currentDay > celestialBodyDataPoint[0]) {
-                let celestialBodyPosition = new THREE.Vector3(celestialBodyDataPoint[1], celestialBodyDataPoint[2], celestialBodyDataPoint[3]);
-                celestialBodyMesh.position.x = celestialBodyPosition.x;
-                celestialBodyMesh.position.y = celestialBodyPosition.y;
-                celestialBodyMesh.position.z = celestialBodyPosition.z;
-                celestialBodyData[1]++;
-                celestialBodyDataPoint = celestialBodyData[2][celestialBodyData[1]];
-            }
-        }
-    }
-
-    startDaySaturnOrbit = endDay;
+export function progressSaturnOrbits(endDay, duration) {
+    progressOrbits(startDaySaturnOrbit, (v) => {startDaySaturnOrbit = v}, endDay, duration, saturnOrbitData, 1000, 0.05, saturnBeginDay - launchBeginDay);
 }

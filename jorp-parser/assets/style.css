@@ -90,12 +90,29 @@ body {
     gap: 2rem;
 }
 
+.image-set-vertical {
+    box-sizing: border-box;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap-reverse;
+    gap: 2rem;
+}
+
+.reverse-horizontal-flex {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+}
+
 .image-set>img,
-.image-set>video {
+.image-set>video,
+.image-set-vertical>img,
+.image-set-vertical>video,
+.reverse-horizontal-flex>img {
     box-sizing: border-box;
     border: 5px solid white;
     object-fit: cover; 
-    rotate: random(-3deg, 3deg);
 }
 
 .date-element>b {
@@ -111,6 +128,10 @@ body {
 }
 
 #canvas-container {
+    background-color: black;
+}
+
+.black-bg {
     background-color: black;
 }
 

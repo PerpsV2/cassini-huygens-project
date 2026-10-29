@@ -9,12 +9,12 @@ const solarViewScale = 1_000_000_000_000; // meters/unit
 const saturnRadius = 120_536_000 / 2;
 
 const titanRadius = 5_150_000 / 2;
-const rheaRadius = 1_527_600 / 2;
-const iapetusRadius = 1_468_600 / 2;
-const dioneRadius = 1_122_800 / 2;
-const tethysRadius = 1_062_200 / 2;
-const enceladusRadius = 504_200 / 2;
-const mimasRadius = 396_400 / 2;
+const rheaRadius = 5_150_000 / 2;
+const iapetusRadius = 5_150_000 / 2;
+const dioneRadius = 5_150_000 / 2;
+const tethysRadius = 5_150_000 / 2;
+const enceladusRadius = 5_150_000 / 2;
+const mimasRadius = 5_150_000 / 2;
 
 const mercuryRadius = 4_879_000 / 2;
 const venusRadius = 12_104_000 / 2;
@@ -477,13 +477,13 @@ export function progressSolarOrbits(endDay, duration) {
 
 let saturnOrbitDataReferences = [
     { mesh: saturnMesh, orbitColour: 0xffffff, positionLog: "saturn-position-log.txt" },
-    { mesh: titanMesh, orbitColour: 0x7d7d7d, positionLog: "titan-position-log.txt" },
-    { mesh: rheaMesh, orbitColour: 0xff9408, positionLog: "rhea-position-log.txt" },
-    { mesh: iapetusMesh, orbitColour: 0x00fff2, positionLog: "iapetus-position-log.txt" },
-    { mesh: dioneMesh, orbitColour: 0xff4f19, positionLog: "dione-position-log.txt" },
-    { mesh: tethysMesh, orbitColour: 0x805613, positionLog: "tethys-position-log.txt" },
-    { mesh: enceladusMesh, orbitColour: 0xa69632, positionLog: "enceladus-position-log.txt" },
-    { mesh: mimasMesh, orbitColour: 0xc4faff, positionLog: "mimas-position-log.txt" },
+    { mesh: titanMesh, orbitColour: 0x63531b, positionLog: "titan-position-log.txt" },
+    { mesh: rheaMesh, orbitColour: 0x575757, positionLog: "rhea-position-log.txt" },
+    { mesh: iapetusMesh, orbitColour: 0x13360f, positionLog: "iapetus-position-log.txt" },
+    { mesh: dioneMesh, orbitColour: 0x999999, positionLog: "dione-position-log.txt" },
+    { mesh: tethysMesh, orbitColour: 0xb8b8b8, positionLog: "tethys-position-log.txt" },
+    { mesh: enceladusMesh, orbitColour: 0x20c9c1, positionLog: "enceladus-position-log.txt" },
+    { mesh: mimasMesh, orbitColour: 0x6b1087, positionLog: "mimas-position-log.txt" },
     { mesh: null, orbitColour: 0xffff00, positionLog: "cassini-position-log.txt" }
 ];
 let saturnOrbitData = constructOrbitData("./assets/saturn-orbit-data/", saturnOrbitDataReferences, saturnBeginDay, saturnViewScale);

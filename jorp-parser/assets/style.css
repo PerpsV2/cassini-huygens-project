@@ -115,6 +115,10 @@ body {
     object-fit: cover; 
 }
 
+.image-set.space-between {
+    justify-content: space-between;
+}
+
 .date-element>b {
     font-family: 'Courier New', 'Courier', 'monospace';
 }

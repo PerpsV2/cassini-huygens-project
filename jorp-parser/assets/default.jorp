@@ -85,21 +85,39 @@ horizontal-flex *,** id="date-tab" {
 horizontal-flex/timeline ****,*** id="timeline-tab" {
   1 div class+="timeline-event-information-box" {
     !div {
-      &h3 : Liftoff;
-      &p : test;
+      &h3 class+="bottom-margin" : Liftoff;
+      &p class+="bottom-margin" : - Oct 15 1997 4:43am EDT at Cape Canaveral.;
+      &p class+="bottom-margin" : - Launched using a Titan IV-B heavy-lift launch vehicle (HLV).;
+      &hr class+="bottom-margin";
+      &h3 class+="bottom-margin" : Staging;
+      &p class+="bottom-margin" : - Stage 0 - Two radially-mounted solid-rocket boosters.;
+      &p class+="bottom-margin" : - Stage 1 - One LR87 liquid-propellant booster.;
+      &p class+="bottom-margin" : - Stage 2 - One LR91 liquid-propellant booster.;
+      &p class+="bottom-margin" : - Centaur T upper-stage.;
     }
     !div {
-      &h3 : Venus flyby and gravity-assist #1;
-      &p : test;
+      &h3 class+="bottom-margin" : Venus Flyby and Gravity-Assist #1;
+      &hr class+="bottom-margin";
+      &hr class+="bottom-margin" Gravity Assist;
+      &p class+="bottom-margin" : - Orbital maneuver which uses gravity to redirect an object's trajectory.;
+      &p class+="bottom-margin" : - Not a violation of the Law of Conservation of Energy.;
+      &p class+="bottom-margin" : - Kinetic energy gained/lossed for one object is lossed/gained for the other (with respect to a third object they are both orbiting).;
+      &hr class+="bottom-margin";
+      &p class+="bottom-margin" : Closest approach of around 280km.;
+      &p class+="bottom-margin" : - First of many gravity assists performed by Cassini-Huygens.;
     }
     !div {
-      &h3 : Venus flyby and gravity-assist #2;
+      &h3 class+="bottom-margin" : Venus Flyby and Gravity-Assist #2;
+      &p class+="bottom-margin" : Dec 3 1998 - DSM-1 (deep space maneuver) performed in order to reach this trajectory.;
+      &p class+="bottom-margin" : Closest approach of around 630km.;
     }
     !div {
-      &h3 : Earth flyby and gravity-assist;
+      &h3 class+="bottom-margin" : Earth-Moon Flyby and Gravity-Assist;
+      &p class+="bottom-margin" : Closest approach to the Moon at around 377,000km.;
+      &p class+="bottom-margin" : Closest approach to the Earth at around 1200km.;
     }
     !div {
-      &h3 : Jupiter flyby and gravity-assist;
+      &h3 : Jupiter Flyby and Gravity-Assist;
     }
     !div {
       &h3 : Encounter with Saturn;
@@ -141,9 +159,18 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
     }
     !div {
       &h3 : Cassini Equinox Mission;
+      &hr;
+      &h3 : New Moons Discovered;
+      &p : - Oct 21 2004 - Polydeuces;
+      &p : - May 01 2005 - Daphnis;
+      &p : - May 30 2007 - Anthe;
     }
     !div {
       &h3 : Cassini Solstice Mission;
+      &hr;
+      &h3 : New Moons Discovered;
+      &p : - Feb 03 2009 - Aegeaon;   
+      &p : - Nov 02 2009 - S/2009 S 1;
     }
     !div {
       &h3 : "The Day the Earth Smiled";
@@ -155,6 +182,22 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
       &h3 : Descent Into Saturn;
     }
   }
+}
+
+div class+="center black-bg" {
+  &h2 : Initial Saturn Mission Phase (1997 - 2003);
+}
+
+div class+="center black-bg" {
+  &h2 : Cassini Equinox Mission (2004 - Jul 2008);
+}
+
+div class+="center black-bg" {
+  &h2 : Cassini Solstice Mission (2004 - 2008);
+}
+
+div class+="center black-bg" {
+  &h2 : Final Mission Phase (2004 - 2008);
 }
 
 div/images id="images-tab" style="box-sizing: border-box;" {
@@ -186,9 +229,9 @@ div/images id="images-tab" style="box-sizing: border-box;" {
       &img src="./assets/images/pallene-discovery.jpg" style="max-width: 15rem; max-height: 15rem;";
     }
   }
-  !div class+="image-set" {
-    &img src="./assets/images/titan-1.jpg" style="max-width: 25rem; max-height: 25rem;";
-    &img src="./assets/images/titan-map-1.jpg" style="max-width: 50rem; max-height: 17.5rem;";
+  !div class+="image-set space-between" {
+    &img src="./assets/images/titan-map-1.jpg" style="max-width: 40rem; max-height: 14rem;";
+    &img src="./assets/images/titan-1.jpg" style="max-width: 20rem; max-height: 20rem;";
   }
   !div class+="image-set" {
     &img src="./assets/images/iapetus.jpg" style="max-width: 30rem; max-height: 30rem;";
@@ -300,12 +343,12 @@ anim initial-frame="reset" {
     id="cassini-launch-video" play;
   }
   frame {
-    id="canvas-container" solar_progressOrbit("193", "5");
+    id="canvas-container" solar_progressOrbit("193", "2");
     frame id="next-timeline-text";
     images d h;
   }
   frame {
-    id="canvas-container" solar_progressOrbit("617", "5");
+    id="canvas-container" solar_progressOrbit("617", "2");
     frame id="next-timeline-text";
   }
   frame {
@@ -314,12 +357,12 @@ anim initial-frame="reset" {
     frame id="next-images";
   }
   frame {
-    id="canvas-container" solar_progressOrbit("1172", "5") positionCamera("0", "2", "0", "0", "0", "0", "5");
+    id="canvas-container" solar_progressOrbit("1172", "2") positionCamera("0", "2", "0", "0", "0", "0", "5");
     frame id="next-timeline-text";
     frame id="next-images";
   }
   frame {
-    id="canvas-container" solar_progressOrbit("2431", "5") positionCamera("0", "4", "0", "0", "0", "0", "5");
+    id="canvas-container" solar_progressOrbit("2431", "2") positionCamera("0", "4", "0", "0", "0", "0", "5");
     frame id="next-timeline-text";
     frame id="next-images";
   }
@@ -377,6 +420,11 @@ anim initial-frame="reset" {
     id="timeline-tab" s;
     id="images-tab" s;
     id="huygens-descent-video-container" h;
+  }
+  frame {
+    id="canvas-container" saturn_progressOrbit("240", "1");
+    frame id="no-images";
+    timeline h;
   }
   frame {
     id="canvas-container" saturn_progressOrbit("251.5", "2") positionCamera("0", "2", "-1", "0", "0", "0", "1");

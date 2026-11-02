@@ -4,7 +4,7 @@
 }
 
 h1 {
-    font-size: 9.5vw;
+    font-size: 6vw;
     color: var(--highlight-colour);
 }
 
@@ -29,7 +29,14 @@ p {
 }
 
 .center {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.center-text {
+    text-align: center;
 }
 
 .horizontal-flex {

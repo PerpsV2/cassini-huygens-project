@@ -37,7 +37,7 @@ div/instruments {
         &h3 : RADIOISOTOPE THERMOELECTRIC GENERATORS (RTGs);
         &h4 class+="bottom-margin" : An electric generator which produces energy via radioactive decay of material.;
         &hr class+="bottom-margin";
-        &p class+="bottom-margin" : Motivation - Scarcity of sunlight (Inverse-square law);
+        &p class+="bottom-margin" : - Preferred over solar panels due to the scarcity of sunlight.;
         &p class+="bottom-margin" : - Used in conjunction with radioisotope heater units (RHUs) to regulate temperature.;
         &p class+="bottom-margin" : - Plutonium-238 fuel.;
       }
@@ -98,10 +98,9 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
     !div {
       &h3 class+="bottom-margin" : Venus Flyby and Gravity-Assist #1;
       &hr class+="bottom-margin";
-      &hr class+="bottom-margin" Gravity Assist;
+      &h3 class+="bottom-margin" : Gravity Assist;
       &p class+="bottom-margin" : - Orbital maneuver which uses gravity to redirect an object's trajectory.;
-      &p class+="bottom-margin" : - Not a violation of the Law of Conservation of Energy.;
-      &p class+="bottom-margin" : - Kinetic energy gained/lossed for one object is lossed/gained for the other (with respect to a third object they are both orbiting).;
+      &p class+="bottom-margin" : - Kinetic energy gained/lossed for one object is lossed/gained for the other.;
       &hr class+="bottom-margin";
       &p class+="bottom-margin" : Closest approach of around 280km.;
       &p class+="bottom-margin" : - First of many gravity assists performed by Cassini-Huygens.;
@@ -117,20 +116,23 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
       &p class+="bottom-margin" : Closest approach to the Earth at around 1200km.;
     }
     !div {
-      &h3 : Jupiter Flyby and Gravity-Assist;
+      &h3 class+="bottom-margin" : Jupiter Flyby and Gravity-Assist;
+      &p class+="bottom-margin" : Closest approach of around 10,000,000km.;
     }
     !div {
       &h3 : Encounter with Saturn;
     }
 
     !div {
-      &h3 : Approach with Phoebe;
+      &h3 class+="bottom-margin" : Approach with Phoebe;
+      &p class+="bottom-margin" : - First major science conducted around Saturn.;
+      &p class+="bottom-margin" : - Largest of Saturn's irregular moons.;
     }
     !div {
       &h3 : First perichron;
       &p class+="bottom-margin" : Happy Canada Day!;
+      &p class+="bottom-margin" : - 1.5 hour burn to capture into Saturn's orbit (orbital insertion).;
       &p class+="bottom-margin" : - Closest point to Saturn in an orbit. (periapsis);
-      &p class+="bottom-margin" : - 1.5 hour burn to capture into Saturn's orbit.;
     }
     !div {
       &h3 class+="bottom-margin" : Discovery of Methone and Pallene;
@@ -141,39 +143,96 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
       &h3 class+="bottom-margin" : First Titan Close-Proximity Flyby and Gravity-Assist;
       &p class+="bottom-margin" : - Geographic similarities to Earth.;
       &p class+="bottom-margin" : - Geologically active.;
-      &p class+="bottom-margin" : - Presence dunes and erosion channels.;
+      &p class+="bottom-margin" : - Presence of dunes and erosion channels.;
     }
     !div {
       &h3 : Huygens Probe is Released;
       &p class+="bottom-margin" : Merry Christmas!;
     }
     !div {
-      &h3 : First Iapetus Close-Proximity Flyby;
-      &p class+="bottom-margin" : Happy New Years Eve!;
+      &h3 class+="bottom-margin" : Huygens Lands on Titan;
+      &p class+="bottom-margin" : - First and only man-made object to have succesfully landed on a body in the outer Solar System.;
+      &p class+="bottom-margin" : - Atmosphere consists mostly of nitrogen (95%) and methane (5%).;
+      &p class+="bottom-margin" : - Methane undergoes a process similar to Earth's water cycle.;
     }
     !div {
-      &h3 : Huygens Lands on Titan;
+      &h3 class+="bottom-margin" : First Enceladus Close-Proximity Flyby;
+      &p class+="bottom-margin" : - Observations of Enceladus' magnetic field showed evidence of a thin atmosphere.;
+      &p class+="bottom-margin" : - Discovery of warmer fractures in the crust called "tiger stripes.";
+      &p class+="bottom-margin" : - Data taken next year revealed large geysers that launched water vapour and other gases into outer space.;
+      &p class+="bottom-margin" : - Material ejected from Enceladus is believed to have formed Saturn's E-ring.;
     }
     !div {
-      &h3 : First Enceladus Close-Proximity Flyby;
-    }
-    !div {
-      &h3 : Cassini Equinox Mission;
-      &hr;
+      &h3 class+="bottom-margin" : Initial Mission Phase Summary;
+      &hr class+="bottom-margin";
       &h3 : New Moons Discovered;
+      &p : - June 1 2004 - Methone;
+      &p : - June 1 2004 - Pallene;
       &p : - Oct 21 2004 - Polydeuces;
       &p : - May 01 2005 - Daphnis;
-      &p : - May 30 2007 - Anthe;
+      &p class+="bottom-margin" : - May 30 2007 - Anthe;
+      &hr class+="bottom-margin";
+      &h3 : Flybys;
+      &p : Titan - 44;
+      &p : Enceladus - 4;
+      &p : Tethys - 2;
+      &p : Methone - 2;
+      &p : Polydeuces - 1;
+      &p : Hyperion - 1;
+      &p : Phoebe - 1;
+      &p : Dione - 1;
+      &p : Rhea - 1;
+      &p : Iapetus - 1;
+      &p class+="bottom-margin" : Janus - 1;
+      &h3 : Total - 59;
     }
     !div {
-      &h3 : Cassini Solstice Mission;
-      &hr;
+      &h3 class+="bottom-margin" : Cassini Equinox Mission (Jul 2008 - Sep 2010);
+    }
+    !div {
+      &h3 class+="bottom-margin" : Cassini Equinox Mission Summary;
+      &hr class+="bottom-margin";
       &h3 : New Moons Discovered;
       &p : - Feb 03 2009 - Aegeaon;   
-      &p : - Nov 02 2009 - S/2009 S 1;
+      &p class+="bottom-margin" : - Nov 02 2009 - S/2009 S 1;
+      &hr class+="bottom-margin";
+      &h3 : Flybys;
+      &p : Titan - 25;
+      &p : Enceladus - 8;
+      &p : Palene - 1;
+      &p : Calypso - 1;
+      &p : Mimas - 1;
+      &p : Rhea - 1;
+      &p : Helene - 1;
+      &p class+="bottom-margin" : Dione - 1;
+      &h3 : Total - 39;
+    }
+    !div {
+      &h3 class+="bottom-margin" : Cassini Solstice Mission (Sep 2010 - Sep 15 2017);
+    }
+    !div {
+      &h3 : Great White Spot (2010 - 2011);
     }
     !div {
       &h3 : "The Day the Earth Smiled";
+    }
+    !div {
+      &h3 class+="bottom-margin" : Cassini Solstice Mission Summary;
+      &hr class+="bottom-margin";
+      &h3 : Flybys;
+      &p : Titan - 43;
+      &p : Enceladus - 11;
+      &p : Hyperion - 3;
+      &p : Dione - 3;
+      &p : Rhea - 2;
+      &p : Telesto - 2;
+      &p : Helene - 1;
+      &p : Pallene - 1;
+      &p : Methone - 1;
+      &p : Epimetheus - 1;
+      &p : Prometheus - 1;
+      &p class+="bottom-margin" : Aegaeon - 1;
+      &h3 : Total - 70;
     }
     !div {
       &h3 : Final Mission Phase and "The Grand Finale";
@@ -184,26 +243,10 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
   }
 }
 
-div class+="center black-bg" {
-  &h2 : Initial Saturn Mission Phase (1997 - 2003);
-}
-
-div class+="center black-bg" {
-  &h2 : Cassini Equinox Mission (2004 - Jul 2008);
-}
-
-div class+="center black-bg" {
-  &h2 : Cassini Solstice Mission (2004 - 2008);
-}
-
-div class+="center black-bg" {
-  &h2 : Final Mission Phase (2004 - 2008);
-}
-
 div/images id="images-tab" style="box-sizing: border-box;" {
   !div class+="image-set" {
-    &video id="cassini-launch-video" src="./assets/videos/cassini-launch.mp4" style="max-width: 30rem; max-height: 20rem;";
-    &img src="./assets/images/launch.jpg" style="max-width: 20rem; max-height: 20rem;";
+    &img src="./assets/images/launch-1.jpg" style="max-width: 20rem; max-height: 20rem;";
+    &img src="./assets/images/launch-2.jpg" style="max-width: 20rem; max-height: 20rem;";
   }
   !div class+="image-set" {
     &img src="./assets/images/moon.jpg" style="max-width: 20rem; max-height: 20rem;";
@@ -234,9 +277,6 @@ div/images id="images-tab" style="box-sizing: border-box;" {
     &img src="./assets/images/titan-1.jpg" style="max-width: 20rem; max-height: 20rem;";
   }
   !div class+="image-set" {
-    &img src="./assets/images/iapetus.jpg" style="max-width: 30rem; max-height: 30rem;";
-  }
-  !div class+="image-set" {
     &img src="./assets/images/titan-surface-2.jpg" style="max-width: 15rem; max-height: 20rem;";
     &img src="./assets/images/titan-surface-1.jpg" style="max-width: 40rem; max-height: 20rem;";
   }
@@ -248,15 +288,19 @@ div/images id="images-tab" style="box-sizing: border-box;" {
   !div class+="image-set" {
     &img src="./assets/images/equinox.jpg" style="max-width: 30rem; max-height: 30rem;";
   }
-  !div class+="image-set" {
-    &img src="./assets/images/hexagon-seasons.jpg" style="max-width: 50rem; max-height: 15rem;";
+  !div class+="image-set-vertical" {
+    &img src="./assets/images/hexagon-seasons.jpg" style="max-width: 30rem; max-height: 30rem;";
+    &img src="./assets/images/saturn-solstice.jpg" style="max-width: 30rem; max-height: 15rem;";
+  }
+  !div class+="image-set' {
+    &img src="./assets/images/great-white-spot.jpg" style="max-width: 30rem; max-height: 30rem;";
   }
   !div class+="image-set-vertical" {
-    &img src="./assets/images/smile.jpg" style="max-width: 30rem; max-height: 20rem;";
+    &img src="./assets/images/smile.jpg" style="max-width: 30rem; max-height: 35rem;";
     &img src="./assets/images/smile-earth.jpg" style="max-width: 30rem; max-height: 15rem;";
   }
   !div class+="image-set" {
-    &img src="./assets/images/apod.jpg" style="max-width: 20rem; max-height: 20rem;";
+    &img src="./assets/images/apod.jpg" style="max-width: 30rem; max-height: 30rem;";
   }
   !div class+="image-set-vertical" {
     &img src="./assets/images/impact-site.jpg" style="max-width: 30rem; max-height: 15rem;";
@@ -267,6 +311,18 @@ div/images id="images-tab" style="box-sizing: border-box;" {
 div id="huygens-descent-video-container" {
   div class+="black-bg";
   video id="huygens-descent-video" src="./assets/videos/huygens-descent.mp4";
+}
+
+div/titles {
+  !div class+="center black-bg" {
+    &h1 class+="center-text" : Mission Timeline;
+    &h2 class+="center-text" : Journey to Saturn (Oct 1997 - Jun 2004);
+  }
+
+  !div class+="center black-bg" {
+    &h1 class+="center-text" : Mission Timeline;
+    &h2 class+="center-text" : Initial Mission Phase (Jun 2004 - Jul 2008);
+  }
 }
 
 frame id="next-instrument-text" {
@@ -291,11 +347,22 @@ frame id="no-images" {
   images d h;
 }
 
+frame id="next-title" {
+  titles h;
+  titles++
+  titles s;
+}
+
+frame id="no-title" {
+  titles h;
+}
+
 anim initial-frame="reset" {
   frame id="reset" {
     /instruments t l;
     /timeline t h;
     /images t d h;
+    /titles t h;
     id="date-tab" t u;
     id="timeline-tab" t r;
     id="images-tab" t h;
@@ -333,6 +400,10 @@ anim initial-frame="reset" {
   }
   frame id="solar-system" {
     id="canvas-container" initializeCanvasScene("SOLAR") solar_progressOrbit("1", "0.01") halfScreenCanvas;
+    titles s;
+  }
+  frame {
+    frame id="no-title";
     id="date-tab" i;
     id="timeline-tab" i;
     id="images-tab" s;
@@ -340,7 +411,6 @@ anim initial-frame="reset" {
   frame {
     timeline s;
     images i s;
-    id="cassini-launch-video" play;
   }
   frame {
     id="canvas-container" solar_progressOrbit("193", "2");
@@ -368,6 +438,16 @@ anim initial-frame="reset" {
   }
   frame id="saturn" {
     id="canvas-container" initializeCanvasScene("SATURN") saturn_progressOrbit("1", "0.01");
+    frame id="next-title";
+    id="date-tab" u;
+    id="images-tab" h;
+    id="timeline-tab" r;
+  }
+  frame {
+    frame id="no-title";
+    id="date-tab" i;
+    id="images-tab" s;
+    id="timeline-tab" i;
     frame id="next-timeline-text";
     frame id="next-images";
   }
@@ -397,12 +477,7 @@ anim initial-frame="reset" {
     frame id="no-images";
   }
   frame {
-    id="canvas-container" saturn_progressOrbit("203", "2") positionCamera("0", "2", "-2", "-4", "0", "-2", "1");
-    frame id="next-timeline-text";
-    frame id="next-images";
-  }
-  frame {
-    id="canvas-container" saturn_progressOrbit("217", "2") positionCamera("0", "2", "-2", "0", "0", "0", "1");
+    id="canvas-container" saturn_progressOrbit("217", "2");
     frame id="next-timeline-text";
     frame id="next-images";
   }
@@ -434,15 +509,32 @@ anim initial-frame="reset" {
   frame {
     id="canvas-container" saturn_progressOrbit("1458", "3") positionCamera("0", "2", "-2", "0", "0", "0", "1");
     frame id="next-timeline-text";
+    frame id="no-images";
+  }
+  frame {
+    frame id="next-timeline-text";
     frame id="next-images";
   }
   frame {
     id="canvas-container" saturn_progressOrbit("2273", "3");
     frame id="next-timeline-text";
+    frame id="no-images";
+  }
+  frame {
+    frame id="next-timeline-text";
+    frame id="next-images";
+  }
+  frame {
+    id="canvas-container" saturn_progressOrbit("2368", "3");
+    frame id="next-timeline-text";
     frame id="next-images";
   }
   frame {
     id="canvas-container" saturn_progressOrbit("3325", "3");
+    frame id="next-timeline-text";
+    frame id="no-images";
+  }
+  frame {
     frame id="next-timeline-text";
     frame id="next-images";
   }

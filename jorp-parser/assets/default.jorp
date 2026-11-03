@@ -2,6 +2,116 @@ slide-container id="slide-container" style="width:100vw; height:40.25vw;";
 
 div id="canvas-container";
 
+div id="blue-bg";
+
+div/saturn-system {
+  !div class+="saturn-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : SATURN;
+        &p class+="big bottom-margin" : - Second largest planet and sixth from the Sun.;
+        &p class+="big bottom-margin" : - Contains a very extensive ring structure.;
+        &p class+="big bottom-margin" : - Most moons of any planet.;
+        &p class+="big bottom-margin" : - 7 major moons.;
+        &p class+="big bottom-margin" : - Axial tilt of 26.73 degrees.;
+        !&div {
+          &hr style="width:45rem; margin-left:0;" class+="bottom-margin";
+          &h3 class+="big bottom-margin" : Cassini-Huygens' Goals;
+          &p class+="big bottom-margin" : Investigate Saturn's:;
+          &p class+="big bottom-margin" : - Magnetosphere.;
+          &p class+="big bottom-margin" : - Internal and atmospheric composition.;
+          &p class+="big bottom-margin" : - Various atmospheric properties.;
+          &p class+="big bottom-margin" : - Rotational period.;
+        }
+      }
+    }
+    div class+="saturn image-set" {
+      &img src="./assets/images/g-saturn-1.jpg" style="max-width: 40rem; max-height: 20rem;";
+      &img src="./assets/images/g-saturn-2.jpg" style="max-width: 40rem; max-height: 20rem;";
+    }
+  }
+  !div class+="saturn-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : RINGS;
+        &p class+="big bottom-margin" : - Consists of many distinct bands and divisions.;
+        &p class+="big bottom-margin" : - A, B, and C-rings are the largest and most visible.;
+        !&horizontal-flex *,* {
+          0 div {
+            &hr style="width:45rem; margin-left:0;" class+="bottom-margin";
+            &h3 class+="big bottom-margin" : Cassini-Huygens' Goals;
+            &p class+="big bottom-margin" : - Investigate how light interacts with the ring system.;
+            &p class+="big bottom-margin" : - Measure the mass of the rings.;
+            &p class+="big bottom-margin" : - Determine the processes responsible for the ring's structure.;
+            &p class+="big bottom-margin" : - Analyze an environment similar to that of the early Solar System.;
+          }
+        }
+      }
+    }
+    div class+="image-set" {
+      &img src="./assets/images/rings.jpg" style="max-width: 50rem; max-height: 30rem;";
+    }
+  }
+  !div class+="saturn-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : TITAN;
+        &p class+="big bottom-margin" : - Second largest moon in the Solar System.;
+        &p class+="big bottom-margin" : - Only moon to have a permanent atmosphere.;
+        !&div {
+          &hr style="width:45rem; margin-left:0;" class+="bottom-margin";
+          &h3 class+="big bottom-margin" : Cassini-Huygens' Goals;
+          &p class+="big bottom-margin" : - Land the Huygens Probe on Titan.;
+          &p class+="big bottom-margin" : - Find out what's under Titan's atmosphere.;
+          &p class+="big bottom-margin" : - Investigate magnetosphere and composition.;
+        }
+      }
+    }
+    div class+="saturn image-set" {
+      &img src="./assets/images/g-titan-1.jpg" style="max-width: 30rem; max-height: 40rem;";
+    }
+  }
+  !div class+="saturn-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : OTHER MAJOR MOONS;
+        &p class+="big bottom-margin" : - Rhea;
+        &p class+="big bottom-margin" : - Iapetus;
+        &p class+="big bottom-margin" : - Dione;
+        &p class+="big bottom-margin" : - Tethys;
+        &p class+="big bottom-margin" : - Enceladus;
+        &p class+="big bottom-margin" : - Mimas;
+        !&div {
+          &hr style="width:45rem; margin-left:0;" class+="bottom-margin";
+          &h3 class+="big bottom-margin" : Cassini-Huygens' Goals;
+          &p class+="big bottom-margin" : - Investigate magnetosphere and composition.;
+          &p class+="big bottom-margin" : - Map surface geographic features.;
+          &p class+="big bottom-margin" : - Determine the presence of active geological processes.;
+        }
+      }
+    }
+    div class+="saturn image-set" {
+      &img src="./assets/images/saturn-moons.jpg" style="max-width: 30rem; max-height: 40rem;";
+    }
+  }
+  !div class+="saturn-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : MINOR MOONS;
+        &p class+="big bottom-margin" : - Mostly consisting of irregular moons.;
+        &p class+="big bottom-margin" : - Split into the Inuit, Gallic, and Norse groups based on the properties of their orbits.;
+        !&div {
+          &hr style="width:45rem; margin-left:0;" class+="bottom-margin";
+          &p class+="big bottom-margin":;
+          &h3 class+="big bottom-margin" : Cassini-Huygens' Goals;
+          &p class+="big bottom-margin" : - Investigate the interaction between Saturn's moons and its ring system.;
+        }
+      }
+    }
+    div class+="saturn image-set";
+  }
+}
+
 div/instruments {
   !horizontal-flex *,** {
     0 div class+="padded-div" {
@@ -148,6 +258,7 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
     !div {
       &h3 : Huygens Probe is Released;
       &p class+="bottom-margin" : Merry Christmas!;
+      &p class+="bottom-margin" : Set on a 21-day trajectory to Titan.;
     }
     !div {
       &h3 class+="bottom-margin" : Huygens Lands on Titan;
@@ -211,7 +322,10 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
       &h3 class+="bottom-margin" : Cassini Solstice Mission (Sep 2010 - Sep 15 2017);
     }
     !div {
-      &h3 : Great White Spot (2010 - 2011);
+      &h3 class+="bottom-margin" : Great White Spot (2010 - 2011);
+      &p : - Large storm on Saturn which periodically appears every ~30 years.;
+      &p : - Occurs during Summer in Saturn's northern hemisphere.;
+      &p : - Large spike in temperature and presence of ethylene after its dissipation.;
     }
     !div {
       &h3 : "The Day the Earth Smiled";
@@ -235,10 +349,16 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
       &h3 : Total - 70;
     }
     !div {
-      &h3 : Final Mission Phase and "The Grand Finale";
+      &h3 class+="bottom-margin" : Final Mission Phase and "The Grand Finale";
+      &p class+="bottom-margin" : - Low on propellant.;
+      &p class+="bottom-margin" : - 22 high-eccentricity orbits passing between Saturn and its rings.;
+      &p class+="bottom-margin" : - Final trajectory would crash Cassini into Saturn.;
     }
     !div {
-      &h3 : Descent Into Saturn;
+      &h3 class+="bottom-margin" : Descent Into Saturn;
+      &p class+="bottom-margin" : - Data sent in real time as Cassini entered Saturn's atmosphere.;
+      &p class+="bottom-margin" : - Valuable information gathered about Saturn's magnetic field.;
+      &p class+="bottom-margin" : - Sep 15 2017 6:32 EDT - atmospheric forces angle Cassini's antennae away from Earth leading to loss of signal.;
     }
   }
 }
@@ -325,6 +445,17 @@ div/titles {
   }
 }
 
+frame id="next-saturn-slide" {
+  /saturn-system h l;
+  saturn-system++;
+  saturn-system s i;
+}
+
+frame id="next-saturn-text" {
+  saturn-system++;
+  saturn-system s i;
+}
+
 frame id="next-instrument-text" {
   instruments l;
   instruments++;
@@ -359,6 +490,7 @@ frame id="no-title" {
 
 anim initial-frame="reset" {
   frame id="reset" {
+    /saturn-system t h l;
     /instruments t l;
     /timeline t h;
     /images t d h;
@@ -367,9 +499,44 @@ anim initial-frame="reset" {
     id="timeline-tab" t r;
     id="images-tab" t h;
     id="huygens-descent-video-container" t h;
+    id="blue-bg" t s;
   }
   frame {
     id="canvas-container" initializeCanvas("100vw", "100vh") initializeCanvasScene("MODEL");
+  }
+  frame {
+    saturn-system s i;
+  }
+  frame {
+    frame id="next-saturn-text";
+  }
+  frame {
+    frame id="next-saturn-slide";
+  }
+  frame {
+    frame id="next-saturn-text";
+  }
+  frame {
+    frame id="next-saturn-slide";
+  }
+  frame {
+    frame id="next-saturn-text";
+  }
+  frame {
+    frame id="next-saturn-slide";
+  }
+  frame {
+    frame id="next-saturn-text";
+  }
+  frame {
+    frame id="next-saturn-slide";
+  }
+  frame {
+    frame id="next-saturn-text";
+  }
+  frame {
+    /saturn-system l;
+    id="blue-bg" h;
   }
   frame {
     id="canvas-container" orbitCamera("0.2", "20", "1");
@@ -532,11 +699,11 @@ anim initial-frame="reset" {
   frame {
     id="canvas-container" saturn_progressOrbit("3325", "3");
     frame id="next-timeline-text";
-    frame id="no-images";
+    frame id="next-images";
   }
   frame {
     frame id="next-timeline-text";
-    frame id="next-images";
+    frame id="no-images";
   }
   frame {
     id="canvas-container" saturn_progressOrbit("4698", "3");

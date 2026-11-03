@@ -18,9 +18,10 @@ horizontal-flex *,** id="outline" {
     &p class+="big bottom-margin" : - Cassini-Huygens Overview;
     &p class+="big bottom-margin" : - History and Planning;
     &p class+="big bottom-margin" : - The Saturnian System and Mission Goals;
+    &p class+="big bottom-margin" : - Spacecraft Instruments;
     &p class+="big bottom-margin" : - Mission Timeline;
-    &p class+="big bottom-margin" : - Key Discoveries;
-    &p class+="big bottom-margin" : - Summary and Conclusion;
+    &p class+="big bottom-margin" : - Summary/Key Discoveries;
+    &p class+="big bottom-margin" : - Sources;
   }
   1 img src="./assets/images/cassini-drawing.jpg";
 }
@@ -232,6 +233,28 @@ div/saturn-system {
   }
 }
 
+div id="summary-container" {
+  horizontal-flex *,* {
+    0 div class+="padded-div" {
+      &div/key-discoveries class+="summary-description-box" {
+        &h3 class+="bottom-margin" : KEY DISCOVERIES;
+        !&p class+="bottom-margin" : - Large amount of information gathered on the composition of Saturn, its rings, and its moons.;
+        !&p class+="bottom-margin" : - Data gathered on the magnetic fields of Saturn and its moons;
+        !&p class+="bottom-margin" : - Better understanding on the structure and formation of Saturn's rings.;
+        !&p class+="bottom-margin" : - Titan's surface revealed to be geologically active and similar to Earth.;
+        !&p class+="bottom-margin" : - Icy plumes on Enceladus and a subsurface ocean which may contain life.;
+        !&p class+="bottom-margin" : - Surfaced mapped for Saturn's major moons.;
+        !&p class+="bottom-margin" : - Data gathered on the Saturn's weather and its short-term and long-term changes.;
+        !&p class+="bottom-margin" : - Over 395,000 new images captured.;
+      }
+    }
+    1 div class+="image-set-vertical" {
+      &img src="./assets/images/titan-surface-map.jpg" style="max-width: 35rem; max-height: 25rem;";
+      &img src="./assets/images/enceladus-plumes.jpg" style="max-width: 35rem; max-height: 25rem;";
+    }
+  }
+}
+
 div/instruments {
   !horizontal-flex *,** {
     0 div class+="padded-div" {
@@ -392,6 +415,7 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
       &p class+="bottom-margin" : - Discovery of warmer fractures in the crust called "tiger stripes.";
       &p class+="bottom-margin" : - Data taken next year revealed large geysers that launched water vapour and other gases into outer space.;
       &p class+="bottom-margin" : - Material ejected from Enceladus is believed to have formed Saturn's E-ring.;
+      &p class+="bottom-margin" : - Data later confirmed to indicate the existence of a large subsurface ocean.;
     }
     !div {
       &h3 class+="bottom-margin" : Initial Mission Phase Summary;
@@ -555,6 +579,18 @@ div id="huygens-descent-video-container" {
 
 div/titles {
   !div class+="center black-bg" {
+    &h1 class+="center-text" : Pre-launch History;
+  }
+
+  !div class+="center black-bg" {
+    &h1 class+="center-text" : Saturn's System and Mission Goals;
+  }
+
+  !div class+="center black-bg" {
+    &h1 class+="center-text" : Instruments;
+  }
+
+  !div class+="center black-bg" {
     &h1 class+="center-text" : Mission Timeline;
     &h2 class+="center-text" : Journey to Saturn (Oct 1997 - Jun 2004);
   }
@@ -562,6 +598,18 @@ div/titles {
   !div class+="center black-bg" {
     &h1 class+="center-text" : Mission Timeline;
     &h2 class+="center-text" : Initial Mission Phase (Jun 2004 - Jul 2008);
+  }
+
+  !div class+="center black-bg" {
+    &h1 class+="center-text" : Key Discoveries;
+  }
+
+  !div class+="center black-bg" {
+    &h1 class+="center-text" : Summary;
+  }
+
+  !div class+="center black-bg" {
+    &h1 class+="center-text" : Bibliography;
   }
 }
 
@@ -606,12 +654,17 @@ frame id="no-images" {
 
 frame id="next-title" {
   titles h;
-  titles++
+  titles++;
   titles s;
 }
 
 frame id="no-title" {
   titles h;
+}
+
+frame id="next-key-discoveries" {
+  key-discoveries++;
+  key-discoveries s;
 }
 
 anim initial-frame=1 {
@@ -622,12 +675,14 @@ anim initial-frame=1 {
     /timeline t h;
     /images t d h;
     /titles t h;
+    /key-discoveries t h;
     id="outline" t h;
     id="overview" t h;
     id="date-tab" t u;
     id="timeline-tab" t r;
     id="images-tab" t h;
     id="huygens-descent-video-container" t h;
+    id="summary-container" t h;
     id="blue-bg" t h;
     id="title-image" t s;
   }
@@ -645,6 +700,10 @@ anim initial-frame=1 {
   }
   frame {
     id="overview" h;
+    titles s;
+  }
+  frame {
+    frame id="no-title";
     history s i;
   }
   frame amount=4 {
@@ -652,6 +711,10 @@ anim initial-frame=1 {
   }
   frame {
     /history l;
+    frame id="next-title";
+  }
+  frame {
+    frame id="no-title";
     saturn-system s i;
   }
   frame {
@@ -684,8 +747,10 @@ anim initial-frame=1 {
   frame {
     /saturn-system l;
     id="blue-bg" h;
+    frame id="next-title";
   }
   frame {
+    frame id="no-title";
     id="canvas-container" orbitCamera("0.2", "20", "1");
   }
   frame { 
@@ -714,7 +779,7 @@ anim initial-frame=1 {
   }
   frame id="solar-system" {
     id="canvas-container" initializeCanvasScene("SOLAR") solar_progressOrbit("1", "0.01") halfScreenCanvas;
-    titles s;
+    frame id="next-title";
   }
   frame {
     frame id="no-title";
@@ -861,5 +926,20 @@ anim initial-frame=1 {
     id="canvas-container" saturn_progressOrbit("4845", "15") positionCamera("-0.5", "1", "-1", "0", "0", "0", "10");
     frame id="next-timeline-text";
     frame id="next-images";
+  }
+  frame {
+    id="date-tab" u h;
+    id="timeline-tab" r h;
+    id="images-tab" d h;
+    frame id="next-title";
+  }
+  frame {
+    frame id="no-title";
+    id="blue-bg" s;
+    id="summary-container" s i;
+    key-discoveries s;
+  }
+  frame amount="7" {
+    frame id="next-key-discoveries";
   }
 }

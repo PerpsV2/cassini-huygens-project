@@ -134,6 +134,11 @@ body {
     height: auto;
 }
 
+.summary-description-box {
+    background-color: var(--main-bg-colour);
+    padding: 1rem;
+}
+
 .image-set {
     box-sizing: border-box;
     padding: 4rem;

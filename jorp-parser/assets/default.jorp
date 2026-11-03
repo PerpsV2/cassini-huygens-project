@@ -4,6 +4,125 @@ div id="canvas-container";
 
 div id="blue-bg";
 
+div id="title-image" {
+  img src="./assets/images/title-img.png";
+  div id="title-text-container" {
+    &h1 class+="top-margin" : Cassini-Huygens;
+    &h2 : Exploring Saturn and its Moons;
+  }
+}
+
+horizontal-flex *,** id="outline" {
+  0 div id="outline-container" {
+    &h3 class+="big bottom-margin" : Outline;
+    &p class+="big bottom-margin" : - Cassini-Huygens Overview;
+    &p class+="big bottom-margin" : - History and Planning;
+    &p class+="big bottom-margin" : - The Saturnian System and Mission Goals;
+    &p class+="big bottom-margin" : - Mission Timeline;
+    &p class+="big bottom-margin" : - Key Discoveries;
+    &p class+="big bottom-margin" : - Summary and Conclusion;
+  }
+  1 img src="./assets/images/cassini-drawing.jpg";
+}
+
+div id="overview" {
+  div id="overview-container" {
+    &h3 class+="big bottom-margin" : Overview - Cassini-Huygens;
+    &p class+="big bottom-margin" : - Cassini-Huygens was a research mission conducted jointly by NASA, the ESA, and the ASI.;
+    &p class+="big bottom-margin" : - Consisted of an orbiter (Cassini) and a landing craft (Huygens) sent to explore Saturn's system 
+    (in particular, the moon of Titan).;
+    &p class+="big bottom-margin" : - Began in October 1997 and ended in September of 2017.;
+  }
+  div class+="image-set space-around" {
+    &img src="./assets/images/nasa.png" style="max-width: 25rem; max-height: 15rem;";
+    &img src="./assets/images/esa.png" style="max-width: 30rem; max-height: 15rem;";
+    &img src="./assets/images/asi.png" style="max-width: 25rem; max-height: 15rem;";
+  }
+}
+
+div/history {
+  !div class+="history-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : CASSINI - NAMESAKE;
+        &p class+="big bottom-margin" : Italian-French astronomer (1625 - 1712).;
+        &p class+="big bottom-margin" : Credited with discovering:;
+        &p class+="big bottom-margin" : - Four moons of Saturn (Iapetus, Rhea, Tethys, and Dione);
+        &p class+="big bottom-margin" : - A gap in Saturn's rings (Cassini division);
+        &p class+="big bottom-margin" : - The Great Red Spot on Jupiter along with Robert Hooke;
+        &p class+="big bottom-margin" : - Rotational periods of Mars and Jupiter;
+        &p class+="big bottom-margin" : Also made a topographic map of France.;
+      }
+    }
+    div class+="image-set-vertical-reverse" {
+      &img src="./assets/images/cassini.jpg" style="max-width: 30rem; max-height: 40rem;";
+    }
+  }
+  !div class+="history-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : HUYGENS - NAMESAKE;
+        &p class+="big bottom-margin" : Dutch polymath (1629 - 1695);
+        &p class+="big bottom-margin" : Studied Saturn and in particular its rings.;
+        &p class+="big bottom-margin" : First to correctly describe the structure of Saturn's rings.;
+        &p class+="big bottom-margin" : Discovered Saturn's largest moon, Titan.;
+        &p class+="big bottom-margin" : Improved telescope designs.;
+        &p class+="big bottom-margin" : Invented the pendulum clock.;
+      }
+    }
+    div class+="image-set" {
+      &img src="./assets/images/aspects-of-saturn.jpg" style="max-width: 20rem; max-height: 30rem;";
+      &img src="./assets/images/huygens.jpg" style="max-width: 20rem; max-height: 30rem;";
+    }
+  }
+  !div class+="history-description-box" {
+    horizontal-flex *****,** {
+      0 div {
+        &h3 class+="big bottom-margin" : MISSION ORIGINS;
+        &p class+="big bottom-margin" : - Flybys of Saturn had been conducted on 1979, 1980, and 1981 by
+Pioneer 11, Voyager 1, and Voyager 2 respectively.;
+        &p class+="big bottom-margin" : - A mission dedicated to Saturn was first proposed in July 1982 by members of the European Space Agency.;
+        &p class+="big bottom-margin" : - Around the same time NASA was looking for more affordable missions.;
+      }
+    }
+    div class+="image-set" {
+      &img src="./assets/images/saturn-voyager2.jpg" style="max-width: 25rem; max-height: 30rem;";
+      &img src="./assets/images/saturn-voyager1.jpg" style="max-width: 25rem; max-height: 20rem;";
+      &img src="./assets/images/saturn-pioneer11.jpg" style="max-width: 25rem; max-height: 20rem;";
+    }
+  }
+  !div class+="history-description-box" {
+    horizontal-flex ****,*** {
+      0 div {
+        &h3 class+="big bottom-margin" : MISSION PLANNING (1982 - 1997);
+        &p class+="big bottom-margin" : - The Planetary Observer program and Mariner Mark II program were proposed by NASA.;
+        &p class+="big bottom-margin" : - One of the major missions of Mariner Mark II would be the Saturn Orbiter/Titan Probe (SOTP).;
+        &p class+="big bottom-margin" : - From 1984-1985 a joint study was conducted by NASA and the ESA on SOTP.;
+      }
+    }
+    div class+="image-set-vertical-reverse" {
+      &img src="./assets/images/mariner-mk2.jpg" style="max-width: 30rem; max-height: 40rem;";
+    }
+  }
+  !div class+="history-description-box" {
+    horizontal-flex ****,*** {
+      0 div {
+        &h3 class+="big bottom-margin" : CONSTRUCTION;
+        &p class+="big bottom-margin" : - Construction on the Huygens probe began as early as 1989.;
+        &p class+="big bottom-margin" : - NASA received approval for the SOTP mission (now named Cassini-Huygens) in 1990.;
+        &p class+="big bottom-margin" : - Budget cuts killed the rest of the Mariner MkII program making Cassini much more specialized.;
+        &p class+="big bottom-margin" : - Construction of Cassini began in 1995 with collaboration from both NASA and the ESA.;
+        &p class+="big bottom-margin" : - ~17 countries contributed to its assembly.; 
+        &p class+="big bottom-margin" : - Ready to launch by July 1997.;
+      }
+    }
+    div class+="image-set" {
+      &img src="./assets/images/cassini-construction.jpg" style="max-width: 20rem; max-height: 30rem;";
+      &img src="./assets/images/huygens-construction.jpg" style="max-width: 20rem; max-height: 30rem;";
+    }
+  }
+}
+
 div/saturn-system {
   !div class+="saturn-description-box" {
     horizontal-flex *****,** {
@@ -25,7 +144,7 @@ div/saturn-system {
         }
       }
     }
-    div class+="saturn image-set" {
+    div class+="image-set-vertical-reverse" {
       &img src="./assets/images/g-saturn-1.jpg" style="max-width: 40rem; max-height: 20rem;";
       &img src="./assets/images/g-saturn-2.jpg" style="max-width: 40rem; max-height: 20rem;";
     }
@@ -67,7 +186,7 @@ div/saturn-system {
         }
       }
     }
-    div class+="saturn image-set" {
+    div class+="image-set-vertical-reverse" {
       &img src="./assets/images/g-titan-1.jpg" style="max-width: 30rem; max-height: 40rem;";
     }
   }
@@ -90,8 +209,8 @@ div/saturn-system {
         }
       }
     }
-    div class+="saturn image-set" {
-      &img src="./assets/images/saturn-moons.jpg" style="max-width: 30rem; max-height: 40rem;";
+    div class+="image-set-vertical-reverse" {
+      &img src="./assets/images/saturn-moons.jpg" style="max-width: 50rem; max-height: 40rem;";
     }
   }
   !div class+="saturn-description-box" {
@@ -102,13 +221,14 @@ div/saturn-system {
         &p class+="big bottom-margin" : - Split into the Inuit, Gallic, and Norse groups based on the properties of their orbits.;
         !&div {
           &hr style="width:45rem; margin-left:0;" class+="bottom-margin";
-          &p class+="big bottom-margin":;
           &h3 class+="big bottom-margin" : Cassini-Huygens' Goals;
           &p class+="big bottom-margin" : - Investigate the interaction between Saturn's moons and its ring system.;
         }
       }
     }
-    div class+="saturn image-set";
+    div class+="image-set-vertical" {
+      &img src="./assets/images/minor-moons.jpg" style="max-width: 40rem; max-height: 30rem;";
+    }
   }
 }
 
@@ -456,6 +576,12 @@ frame id="next-saturn-text" {
   saturn-system s i;
 }
 
+frame id="next-history-text" {
+  history h l;
+  history++;
+  history s i;
+}
+
 frame id="next-instrument-text" {
   instruments l;
   instruments++;
@@ -488,23 +614,44 @@ frame id="no-title" {
   titles h;
 }
 
-anim initial-frame="reset" {
+anim initial-frame=1 {
   frame id="reset" {
+    /history t h l;
     /saturn-system t h l;
     /instruments t l;
     /timeline t h;
     /images t d h;
     /titles t h;
+    id="outline" t h;
+    id="overview" t h;
     id="date-tab" t u;
     id="timeline-tab" t r;
     id="images-tab" t h;
     id="huygens-descent-video-container" t h;
-    id="blue-bg" t s;
+    id="blue-bg" t h;
+    id="title-image" t s;
   }
   frame {
     id="canvas-container" initializeCanvas("100vw", "100vh") initializeCanvasScene("MODEL");
   }
   frame {
+    id="title-image" h;
+    id="blue-bg" s;
+    id="outline" s;
+  }
+  frame {
+    id="outline" h;
+    id="overview" s;
+  }
+  frame {
+    id="overview" h;
+    history s i;
+  }
+  frame amount=4 {
+    frame id="next-history-text";
+  }
+  frame {
+    /history l;
     saturn-system s i;
   }
   frame {

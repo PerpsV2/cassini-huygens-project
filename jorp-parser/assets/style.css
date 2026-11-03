@@ -43,6 +43,13 @@ p.big {
     flex-direction: column;
 }
 
+#title-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
 .center-text {
     text-align: center;
 }
@@ -71,6 +78,28 @@ body {
 }
 
 .padded-div {
+    padding: 1rem;
+}
+
+#overview {
+    background-color: var(--main-bg-colour);
+}
+
+#overview-container { 
+    padding: 1rem;
+}
+
+#outline {
+    background-color: var(--main-bg-colour);
+}
+
+#outline-container {
+    padding: 1rem;
+    border: double var(--highlight-colour);
+}
+
+.history-description-box {
+    background-color: var(--main-bg-colour);
     padding: 1rem;
 }
 
@@ -123,7 +152,7 @@ body {
     gap: 2rem;
 }
 
-.image-set.saturn {
+.image-set-vertical-reverse {
     box-sizing: border-box;
     padding: 4rem;
     display: flex;
@@ -142,6 +171,8 @@ body {
 .image-set>video,
 .image-set-vertical>img,
 .image-set-vertical>video,
+.image-set-vertical-reverse>img,
+.image-set-vertical-reverse>video,
 .reverse-horizontal-flex>img {
     box-sizing: border-box;
     border: 5px solid white;
@@ -150,6 +181,10 @@ body {
 
 .image-set.space-between {
     justify-content: space-between;
+}
+
+.image-set.space-around {
+    justify-content: space-around;
 }
 
 .date-element>b {
@@ -162,6 +197,10 @@ body {
 
 .bottom-margin {
     margin-bottom: 1rem;
+}
+
+.top-margin {
+    margin-top : 5rem;
 }
 
 #canvas-container {

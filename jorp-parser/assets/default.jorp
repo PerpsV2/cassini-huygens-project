@@ -10,6 +10,9 @@ div id="title-image" {
     &h1 class+="top-margin" : Cassini-Huygens;
     &h2 : Exploring Saturn and its Moons;
   }
+  div id="title-text-container-reverse" {
+    &h3 class+="bottom-margin" : by Joseph and Ranfateh;
+  }
 }
 
 horizontal-flex *,** id="outline" {

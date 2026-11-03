@@ -50,6 +50,13 @@ p.big {
     height: 100%;
 }
 
+#title-text-container-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 100%;
+}
+
 .center-text {
     text-align: center;
 }

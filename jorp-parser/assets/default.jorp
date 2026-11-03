@@ -1,4 +1,4 @@
-slide-container id="slide-container" style="width:100vw; height:40.25vw;";
+slide-container id="slide-container" style="width:100vw; height:85vh;";
 
 div id="canvas-container";
 
@@ -101,7 +101,7 @@ Pioneer 11, Voyager 1, and Voyager 2 respectively.;
         &h3 class+="big bottom-margin" : MISSION PLANNING (1982 - 1997);
         &p class+="big bottom-margin" : - The Planetary Observer program and Mariner Mark II program were proposed by NASA.;
         &p class+="big bottom-margin" : - One of the major missions of Mariner Mark II would be the Saturn Orbiter/Titan Probe (SOTP).;
-        &p class+="big bottom-margin" : - From 1984-1985 a joint study was conducted by NASA and the ESA on SOTP.;
+        &p class+="big bottom-margin" : - From 1984-1985 a joint study was conducted by NASA and the ESA on the SOTP.;
       }
     }
     div class+="image-set-vertical-reverse" {
@@ -180,7 +180,7 @@ div/saturn-system {
       0 div {
         &h3 class+="big bottom-margin" : TITAN;
         &p class+="big bottom-margin" : - Second largest moon in the Solar System.;
-        &p class+="big bottom-margin" : - Only moon to have a permanent atmosphere.;
+        &p class+="big bottom-margin" : - Thickest permanent atmosphere on a moon.;
         !&div {
           &hr style="width:45rem; margin-left:0;" class+="bottom-margin";
           &h3 class+="big bottom-margin" : Cassini-Huygens' Goals;
@@ -254,6 +254,52 @@ div id="summary-container" {
     1 div class+="image-set-vertical" {
       &img src="./assets/images/titan-surface-map.jpg" style="max-width: 35rem; max-height: 25rem;";
       &img src="./assets/images/enceladus-plumes.jpg" style="max-width: 35rem; max-height: 25rem;";
+    }
+  }
+}
+
+div id="sources-container" {
+  div {
+    div id="sources-1" class+="padded-div" {
+      &h3 : Bibliography;
+      &p class+="bottom-margin" : European Space Agency. “Anniversary of the Launch of Cassini-Huygens.” October 13, 2017. 
+      https://www.esa.int/About_Us/50_years_of_ESA/Anniversary_of_the_launch_of_Cassini-Huygens.;
+      &p class+="bottom-margin" : European Space Agency. “Objectives.” Cassini-Huygens. 
+      https://sci.esa.int/web/cassini-huygens/2085-objectives.;
+      &p class+="bottom-margin" : “Cassini: The Spacecraft.” NASA Goddard Space Flight Center. 
+      https://science.gsfc.nasa.gov/attic/huygensgcms/Cassini_Instruments.htm.;
+      &p class+="bottom-margin" : “Cassini’s Largest Science Instrument.” NASA Science. 
+      https://science.nasa.gov/missions/cassini/cassinis-largest-science-instrument/.;
+      &p class+="bottom-margin" : “Cassini Plasma Spectrometer (CAPS).” NASA Science. 
+      https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/cassini-plasma-spectrometer/.;
+      &p class+="bottom-margin" : “Composite Infrared Spectrometer (CIRS).” NASA Science. 
+      https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/composite-infrared-spectrometer/.;
+      &p class+="bottom-margin" : “Huygens, Christiaan.” Wikipedia. Wikimedia Foundation. 
+      https://en.wikipedia.org/wiki/Christiaan_Huygens.;
+      &p class+="bottom-margin" : “Huygens Probe.” NASA Science. 
+      https://science.nasa.gov/mission/cassini/spacecraft/huygens-probe/.;
+      &p class+="bottom-margin" : “Magnetometer (MAG).” NASA Science. 
+      https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/magnetometer/.;
+      &p class+="bottom-margin" : NASA. “Arrival and Departure at Phoebe.” NASA Science. 
+      https://science.nasa.gov/resource/arrival-and-departure-at-phoebe/.;
+    }
+    div id="sources-2" class+="padded-div" {
+      &p class+="bottom-margin" : NASA. “Cassini with All Its Parts Labeled.” NASA Science. 
+      https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/1994/Cassini_with_all_its_parts_labeled.jpeg.;
+      &p class+="bottom-margin" : NASA. “3D Resources.” NASA Science. 
+      https://science.nasa.gov/3d-resources/.;
+      &p class+="bottom-margin" : NASA. “Overview.” Cassini Grand Finale. NASA Science. 
+      https://science.nasa.gov/mission/cassini/grand-finale/overview/.;
+      &p class+="bottom-margin" : NASA. “Timeline.” Cassini. NASA Science. 
+      https://science.nasa.gov/mission/cassini/the-journey/timeline/.;
+      &p class+="bottom-margin" : NASA. “Overview.” Cassini Science. NASA Science. 
+      https://science.nasa.gov/mission/cassini/science/overview/.;
+      &p class+="bottom-margin" : NASA. “Saturn: Facts.” NASA Science. 
+      https://science.nasa.gov/saturn/facts/.;
+      &p class+="bottom-margin" : “Giovanni Domenico Cassini.” Wikipedia. Wikimedia Foundation. 
+      https://en.wikipedia.org/wiki/Giovanni_Domenico_Cassini.;
+      &p class+="bottom-margin" : “Timeline_of_Cassini–Huygens.” Wikipedia. Wikimedia Foundation.
+      https://en.wikipedia.org/wiki/Timeline_of_Cassini%E2%80%93Huygens.;
     }
   }
 }
@@ -497,9 +543,9 @@ horizontal-flex/timeline ****,*** id="timeline-tab" {
     }
     !div {
       &h3 class+="bottom-margin" : Final Mission Phase and "The Grand Finale";
-      &p class+="bottom-margin" : - Low on propellant.;
       &p class+="bottom-margin" : - 22 high-eccentricity orbits passing between Saturn and its rings.;
       &p class+="bottom-margin" : - Final trajectory would crash Cassini into Saturn.;
+      &p class+="bottom-margin" : - Main reasoning was to prevent potential contamination of Saturn's moons.;
     }
     !div {
       &h3 class+="bottom-margin" : Descent Into Saturn;
@@ -686,11 +732,14 @@ anim initial-frame=1 {
     id="images-tab" t h;
     id="huygens-descent-video-container" t h;
     id="summary-container" t h;
+    id="sources-container" t h;
+    id="sources-1" t h l;
+    id="sources-2" t h l;
     id="blue-bg" t h;
     id="title-image" t s;
   }
   frame {
-    id="canvas-container" initializeCanvas("100vw", "100vh") initializeCanvasScene("MODEL");
+    id="canvas-container" initializeCanvas("100%", "100%") initializeCanvasScene("MODEL");
   }
   frame {
     id="title-image" h;
@@ -944,5 +993,14 @@ anim initial-frame=1 {
   }
   frame amount="7" {
     frame id="next-key-discoveries";
+  }
+  frame {
+    id="summary-container" h;
+    id="sources-container" s;
+    id="sources-1" s i;
+  }
+  frame {
+    id="sources-1" h l;
+    id="sources-2" s i;
   }
 }

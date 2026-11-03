@@ -11,7 +11,7 @@ div id="title-image" {
     &h2 : Exploring Saturn and its Moons;
   }
   div id="title-text-container-reverse" {
-    &h3 class+="bottom-margin" : by Joseph and Ranfateh;
+    &h3 class+="super-bottom-margin" : by Joseph and Ranfateh;
   }
 }
 

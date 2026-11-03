@@ -211,6 +211,10 @@ body {
     margin-bottom: 1rem;
 }
 
+.super-bottom-margin {
+    margin-bottom: 5rem;
+}
+
 .top-margin {
     margin-top : 5rem;
 }
